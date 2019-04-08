@@ -1,0 +1,9 @@
+vn\shop\SPRestService\controller\LoginController.class
+vn\shop\SPRestService\brvalidator\impl\TestValidatorImpl.class
+vn\shop\SPRestService\api\impl\ServiceCommons.class
+vn\shop\SPRestService\api\impl\DataServiceV1Impl.class
+vn\shop\SPRestService\utils\CallableUser.class
+vn\shop\SPRestService\api\DataServiceV1.class
+vn\shop\SPRestService\ShopeeRestServiceApplication.class
+vn\shop\SPRestService\brvalidator\TestValidator.class
+vn\shop\SPRestService\model\TestModel.class
