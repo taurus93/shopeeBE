@@ -1,0 +1,5 @@
+vn\shop\library\common\constants\MysqlConstant.class
+vn\shop\library\common\model\dao\Client.class
+vn\shop\library\common\model\dao\Category.class
+vn\shop\library\common\model\dao\User.class
+vn\shop\library\common\util\ConfigEnum.class

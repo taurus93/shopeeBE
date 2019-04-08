@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ShopeeAPI" />
+        <module name="ShopeeLibrary" />
+        <module name="shopeeWeb" />
+        <module name="SPRestService" />
+        <module name="Web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MavenParent" target="1.7" />
+      <module name="ShopeeAPI" target="1.8" />
+      <module name="ShopeeLibrary" target="1.7" />
+      <module name="ShopeeRestService" target="1.8" />
+      <module name="ShopeeWeb" target="1.5" />
+      <module name="shopeeWeb" target="1.7" />
+      <module name="ShopeeWebApp" target="1.5" />
+      <module name="SPRestService" target="1.8" />
+      <module name="SPWeb" target="1.5" />
+      <module name="web" target="1.7" />
+      <module name="Web" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
