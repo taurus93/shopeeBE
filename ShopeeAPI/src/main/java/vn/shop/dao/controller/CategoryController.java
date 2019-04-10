@@ -2,14 +2,17 @@ package vn.shop.dao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.shop.dao.service.CategoryService;
 import vn.shop.dao.service.ClientSevice;
 import vn.shop.library.common.model.dao.Category;
 import vn.shop.library.common.model.dao.Client;
+import vn.shop.library.common.model.dao.User;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import java.util.List;
 
 /**
@@ -34,11 +37,12 @@ public class CategoryController {
         return categoryService.getAllCategory();
     }
 
-//    @POST
-//    @RequestMapping(path = "/insertUser", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public int insertUser(@RequestBody User user) {
-//        return clientSevice.insertUser(user);
-//    }
+
+    @POST
+    @RequestMapping(path = "/insertCategory", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int insertUser(@RequestBody Category category) {
+        return categoryService.insertCategory(category);
+    }
 //
 //    @GET
 //    @RequestMapping(path = "/getUserByUserName", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -13,12 +13,12 @@ public interface CategoryService {
     /**
      * Returns boolean
      *
-     * @param  client
+     * @param  category
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-//    int insertClient(Client client);
+    int insertCategory(Category category);
 
     /**
      * Returns an Client

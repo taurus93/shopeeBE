@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = { "vn.shop"})
+@ComponentScan(basePackages = { "vn.shop.dao"})
 public class ShopeeApiApplication {
 
 	public static void main(String[] args) {
