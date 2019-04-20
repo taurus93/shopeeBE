@@ -24,4 +24,16 @@ public class DataServiceV1Impl extends ServiceCommons implements DataServiceV1 {
         }
         return result;
     };
+    @Override
+    public String getAllCategory() {
+//        String urlCompute = PropertiesReader.getValue(ConfigEnum.DS_COMPUTE_URL);
+        String result = "";
+        result = getDataToService("http://localhost:8007/ShopeeDao/category/getAllCategory");
+        try {
+
+        }catch (Exception e) {
+//            LOGGER
+        }
+        return result;
+    };
 }

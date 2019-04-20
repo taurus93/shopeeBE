@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/MavenParent.iml" filepath="$PROJECT_DIR$/MavenParent.iml" />
       <module fileurl="file://$PROJECT_DIR$/SPRestService/SPRestService.iml" filepath="$PROJECT_DIR$/SPRestService/SPRestService.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShopeeAPI/ShopeeAPI.iml" filepath="$PROJECT_DIR$/ShopeeAPI/ShopeeAPI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ShopeeAPI/ShopeeAPI.iml" filepath="$PROJECT_DIR$/ShopeeAPI/ShopeeAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShopeeLibrary/ShopeeLibrary.iml" filepath="$PROJECT_DIR$/ShopeeLibrary/ShopeeLibrary.iml" />
     </modules>
   </component>

@@ -13,4 +13,5 @@ public interface DataServiceV1 {
      * */
     String getAllUser();
 
+    String getAllCategory();
 }
