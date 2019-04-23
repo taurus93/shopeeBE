@@ -18,7 +18,7 @@ public interface CategoryService {
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-    int insertCategory(Category category);
+    String insertCategory(Category category);
 
     /**
      * Returns an Client

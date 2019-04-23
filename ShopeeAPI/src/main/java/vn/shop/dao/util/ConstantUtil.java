@@ -25,4 +25,13 @@ public class ConstantUtil {
     public static final String CAT_DESCRIPTION = "catDescription";
     public static final String CAT_PICTURE = "catPicture";
     /*E: category*/
+    /*B: product*/
+    public static final String productID = "productID";
+    public static final String productCode = "productCode";
+    public static final String productName = "productName";
+    public static final String productPrice = "productPrice";
+    public static final String productPicture = "productPicture";
+    public static final String productDescription = "productDescription";
+    public static final String categoryID_FK = "categoryID_FK";
+    /*E: product*/
 }

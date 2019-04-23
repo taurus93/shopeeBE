@@ -8,7 +8,7 @@ import java.util.List;
  * Created by lttung on 3/29/2019.
  */
 public interface CategoryDao {
-    int insertCategory(Category Category);
+    String insertCategory(Category Category);
 
     List<Category> getCategory(int categoryID);
 

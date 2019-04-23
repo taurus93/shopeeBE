@@ -1,5 +1,7 @@
 package vn.shop.SPRestService.api;
 
+import vn.shop.library.common.model.dao.Category;
+
 import java.util.List;
 
 /**
@@ -14,4 +16,6 @@ public interface DataServiceV1 {
     String getAllUser();
 
     String getAllCategory();
+
+    String insertCategory(Category category);
 }

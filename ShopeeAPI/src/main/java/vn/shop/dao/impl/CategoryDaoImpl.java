@@ -24,19 +24,19 @@ public class CategoryDaoImpl implements CategoryDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int insertCategory(Category category) {
+    public String insertCategory(Category category) {
         logger.info("Begin insert category");
-        String sql = "INSERT INTO category(categoryName, catDescription, catPicture) value(?, ?, ?)";
+        String sql = "INSERT INTO category(categoryID, categoryName, catDescription, catPicture) value(?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{category.getCategoryName(), category.getCatDescription(), category.getCatPicture()});
+            return String.valueOf(jdbcTemplate.update(sql, new Object[]{category.getCategoryID(), category.getCategoryName(), category.getCatDescription(), category.getCatPicture()}));
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
         logger.info("End insert, result: Success");
-        return 0;
+        return "0";
     }
 
     @Override

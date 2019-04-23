@@ -1,5 +1,8 @@
 package vn.shop.SPRestService.api.impl;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,7 +19,7 @@ public class ServiceCommons {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceCommons.class);
 
-    protected String postDataToService(String url, Object data){
+    public static String postDataToService(String url, Object data){
         RestTemplate restClient = new RestTemplate();
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -36,7 +39,7 @@ public class ServiceCommons {
         return null;
     }
 
-    protected String getDataToService(String url) {
+    public static String getDataToService(String url) {
         RestTemplate restTemplate = new RestTemplate();
 
         LOGGER.info("Send GET request to URL: {}", url);
@@ -48,5 +51,15 @@ public class ServiceCommons {
         }
         LOGGER.info("End get Data to Service: null");
         return null;
+    }
+    public static ClientResponse postDataToServiceGetRespone(String url, Object data){
+        try {
+            WebResource webResource = Client.create().resource(url);
+            return webResource.type(javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE).post(ClientResponse.class, data);
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage( ), e);
+            return null;
+        }
     }
 }

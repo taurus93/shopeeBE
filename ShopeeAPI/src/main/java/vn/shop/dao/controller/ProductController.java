@@ -7,25 +7,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.shop.dao.service.CategoryService;
-import vn.shop.dao.service.ClientSevice;
+import vn.shop.dao.service.ProductService;
 import vn.shop.library.common.model.dao.Category;
-import vn.shop.library.common.model.dao.Client;
-import vn.shop.library.common.model.dao.User;
+import vn.shop.library.common.model.dao.Product;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import java.util.List;
 
 /**
- * Created by lttung on 3/29/2019.
+ * Created by lttung on 4/23/2019.
  */
 @RestController
-@RequestMapping(path = "/ShopeeDao/category")
+@RequestMapping(path = "/ShopeeDao/product")
 @CrossOrigin(origins = "*")
-public class CategoryController {
-
+public class ProductController {
     @Autowired
-    private CategoryService categoryService;
+    private ProductService productService;
 
 //    @POST
 //    @RequestMapping(path = "/getUser", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,16 +32,16 @@ public class CategoryController {
 //    }
 
     @GET
-    @RequestMapping(path = "/getAllCategory", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Category> getAllCategory() {
-        return categoryService.getAllCategory();
+    @RequestMapping(path = "/getAllProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getAllProduct() {
+        return productService.getAllProduct();
     }
 
 
     @POST
-    @RequestMapping(path = "/insertCategory", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String insertUser(@RequestBody Category category) {
-        return categoryService.insertCategory(category);
+    @RequestMapping(path = "/insertProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String insertUser(@RequestBody Product product) {
+        return productService.insertProduct(product);
     }
 //
 //    @GET
