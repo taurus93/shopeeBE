@@ -13,8 +13,8 @@ public class User implements Serializable{
     private static final long serialVersionUID = 1L;
     private Integer userID;
     private String userName;
+    private String userEmail;
     private String password;
-    private Integer clientID_FK;
 
     public Integer getUserID() {
         return userID;
@@ -40,11 +40,12 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public Integer getClientID_FK() {
-        return clientID_FK;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setClientID_FK(Integer clientID_FK) {
-        this.clientID_FK = clientID_FK;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
+
 }

@@ -21,8 +21,8 @@ public class UserMapper implements RowMapper<User> {
 
             result.setUserID(resultSet.getInt(ConstantUtil.USER_ID));
             result.setUserName(resultSet.getString(ConstantUtil.USER_NAME));
+            result.setUserName(resultSet.getString(ConstantUtil.USER_NAME));
             result.setPassword(resultSet.getString(ConstantUtil.PASSWORD));
-            result.setClientID_FK(resultSet.getInt(ConstantUtil.ClientID_FK));
 
         }catch (Exception e) {
 

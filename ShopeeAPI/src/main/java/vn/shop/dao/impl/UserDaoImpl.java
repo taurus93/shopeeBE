@@ -27,10 +27,10 @@ public class UserDaoImpl implements UserDao{
     @Override
     public int insertUser(User user) {
         logger.info("Begin insert user");
-        String sql = "INSERT INTO user(userName, password, clientID_FK) value(?, ?, ?)";
+        String sql = "INSERT INTO user(userName, userEmail, password) value(?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPassword(), user.getClientID_FK()});
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getUserEmail(), user.getPassword()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -41,16 +41,16 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public List<User> getUser(String userName, String password) {
+    public List<User> getUser(String userEmail, String password) {
 
         logger.info("Begin get list user");
 
-        String sql = "SELECT * FROM user WHERE userName = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE userEmail = ? AND password = ?";
 
         List<User> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{userName, password}, new UserMapper());
+            ret =  jdbcTemplate.query(sql, new Object[]{userEmail, password}, new UserMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
