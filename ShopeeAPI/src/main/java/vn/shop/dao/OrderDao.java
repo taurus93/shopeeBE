@@ -5,6 +5,9 @@ import vn.shop.library.common.model.dao.Order;
 
 import java.util.List;
 
+/**
+ * Created by lttung on 12/17/2018.
+ */
 public interface OrderDao {
     int insertOrder(Order order);
 

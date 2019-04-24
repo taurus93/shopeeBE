@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import vn.shop.dao.ClientDao;
 import vn.shop.dao.OrderDao;
 import vn.shop.dao.jdbc.OrderMapper;
+import vn.shop.dao.jdbc.ProductMapper;
 import vn.shop.library.common.model.dao.Order;
 import vn.shop.library.common.model.dao.Order;
+import vn.shop.library.common.model.dao.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +27,25 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public int insertOrder(Order order) {
         logger.info("Begin insert");
-        String sql = "INSERT INTO orderdetails(orderDate, quantity, totalPrice, productID_FK, userEmail_FK, paymentID_FK) value(?, ?, ?, ?, ?, ?)";
+
+        String sql = "SELECT * FROM product WHERE productID = ?";
+
+        List<Product> ret = new ArrayList<>();
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{order.getOrderDate(), order.getQuantity(),
-                    order.getTotalPrice(), order.getProductID_FK(), order.getUserEmail_FK(), order.getPaymentID_FK()});
+            ret =  jdbcTemplate.query(sql, new Object[]{order.getProductID_FK()}, new ProductMapper());
+
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        Float totalPrice = ret.get(0).getProductPrice() * order.getQuantity();
+
+        String sql1 = "INSERT INTO orderdetails(orderDate, quantity, totalPrice, productID_FK, userEmail_FK, paymentID_FK) value(?, ?, ?, ?, ?, ?)";
+        try {
+
+            return jdbcTemplate.update(sql1, new Object[]{order.getOrderDate(), order.getQuantity(),
+                    totalPrice, order.getProductID_FK(), order.getUserEmail_FK(), order.getPaymentID_FK()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -42,7 +58,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getOrder(int orderDetailsID) {
 
-        logger.info("Begin get Order by email");
+        logger.info("Begin get Order");
 
         String sql = "SELECT * FROM orderdetails WHERE orderDetailsID = ?";
 
