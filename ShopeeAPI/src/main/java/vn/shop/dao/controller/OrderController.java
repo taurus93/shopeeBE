@@ -2,9 +2,7 @@ package vn.shop.dao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import vn.shop.dao.service.OrderService;
 import vn.shop.dao.service.OrderService;
 import vn.shop.library.common.model.dao.Order;
@@ -13,6 +11,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import java.util.List;
 
+@RestController
+@RequestMapping(path = "/ShopeeDao/order")
+@CrossOrigin(origins = "*")
 public class OrderController {
 
     @Autowired

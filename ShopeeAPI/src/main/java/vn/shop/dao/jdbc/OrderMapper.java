@@ -17,8 +17,6 @@ public class OrderMapper implements RowMapper<Order> {
 
             result.setOrderDetailsID(resultSet.getInt(ConstantUtil.orderDetailsID));
             result.setOrderDate(resultSet.getString(ConstantUtil.orderDate));
-            result.setProductCode(resultSet.getString(ConstantUtil.productCode));
-            result.setProductPrice(resultSet.getFloat(ConstantUtil.productPrice));
             result.setQuantity(resultSet.getInt(ConstantUtil.quantity));
             result.setTotalPrice(resultSet.getFloat(ConstantUtil.totalPrice));
             result.setProductID_FK(resultSet.getInt(ConstantUtil.productID_FK));

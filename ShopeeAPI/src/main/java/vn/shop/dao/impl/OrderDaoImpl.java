@@ -25,12 +25,11 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public int insertOrder(Order order) {
         logger.info("Begin insert");
-        String sql = "INSERT INTO orderdetails(orderDetailsID, orderDate, productCode, " +
-                "productPrice, quantity, totalPrice, productID_FK, userEmail_FK, paymentID_FK) value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO orderdetails(orderDate, quantity, totalPrice, productID_FK, userEmail_FK, paymentID_FK) value(?, ?, ?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{order.getOrderDetailsID(), order.getOrderDate(), order.getProductCode(),
-                    order.getProductPrice(), order.getQuantity(), order.getTotalPrice(), order.getProductID_FK(), order.getUserEmail_FK(), order.getPaymentID_FK()});
+            return jdbcTemplate.update(sql, new Object[]{order.getOrderDate(), order.getQuantity(),
+                    order.getTotalPrice(), order.getProductID_FK(), order.getUserEmail_FK(), order.getPaymentID_FK()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);

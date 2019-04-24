@@ -9,8 +9,6 @@ public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer orderDetailsID;
     private String orderDate;
-    private String productCode;
-    private Float productPrice;
     private Integer quantity;
     private Float totalPrice;
     private Integer productID_FK;
@@ -31,22 +29,6 @@ public class Order implements Serializable {
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
-    public Float getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(Float productPrice) {
-        this.productPrice = productPrice;
     }
 
     public Integer getQuantity() {

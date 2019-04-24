@@ -10,7 +10,7 @@ import vn.shop.library.common.model.dao.Product;
 
 import java.util.List;
 
-@Service("ProductService")
+@Service("orderService")
 public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderDao orderDao;

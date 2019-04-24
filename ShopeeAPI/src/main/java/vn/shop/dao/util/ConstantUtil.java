@@ -45,4 +45,8 @@ public class ConstantUtil {
     public static final String userEmail_FK = "userEmail_FK";
     public static final String paymentID_FK = "paymentID_FK";
     /*E: product*/
+    /*B: product*/
+    public static final String paymentID = "paymentID";
+    public static final String paymentType = "paymentType";
+    /*E: product*/
 }
