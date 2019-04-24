@@ -2,10 +2,7 @@ package vn.shop.dao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.shop.dao.service.UserSevice;
 import vn.shop.library.common.model.dao.User;
 
@@ -20,6 +17,7 @@ import java.util.*;
  */
 @RestController
 @RequestMapping(path = "/ShopeeDao/user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -44,9 +42,9 @@ public class UserController {
     }
 
     @GET
-    @RequestMapping(path = "/getUserByUserName", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> getUserByUserName(@RequestParam(name = "userName") String userName) {
-        return userSevice.getUserByUserName(userName);
+    @RequestMapping(path = "/getUserByUserEmail", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<User> getUserByUserName(@RequestParam(name = "userEmail") String userEmail) {
+        return userSevice.getUserByUserName(userEmail);
     }
 
     @PUT

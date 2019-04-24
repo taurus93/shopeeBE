@@ -2,10 +2,7 @@ package vn.shop.dao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.shop.dao.service.CategoryService;
 import vn.shop.dao.service.ProductService;
 import vn.shop.library.common.model.dao.Category;
@@ -44,11 +41,11 @@ public class ProductController {
         return productService.insertProduct(product);
     }
 //
-//    @GET
-//    @RequestMapping(path = "/getUserByUserName", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<User> getUserByUserName(@RequestParam(name = "userName") String userName) {
-//        return clientSevice.getUserByUserName(userName);
-//    }
+    @GET
+    @RequestMapping(path = "/getProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getUserByUserName(@RequestParam(name = "productCode") String productCode) {
+        return productService.getProduct(productCode);
+    }
 //
 //    @PUT
 //    @RequestMapping(path = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)

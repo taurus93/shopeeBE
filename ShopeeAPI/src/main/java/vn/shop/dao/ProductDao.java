@@ -12,7 +12,7 @@ public interface ProductDao {
 
     String insertProduct(Product product);
 
-    List<Product> getProduct(int productID);
+    List<Product> getProduct(String productCode);
 
     List<Product> getAllProduct();
 

@@ -28,4 +28,8 @@ public class ProductServiceImpl implements ProductService {
     public String insertProduct(Product product) {
         return productDao.insertProduct(product);
     }
+    @Override
+    public List<Product> getProduct(String productCode) {
+        return productDao.getProduct(productCode);
+    }
 }

@@ -41,16 +41,16 @@ public class ProductDaoImpl implements ProductDao{
     }
 
     @Override
-    public List<Product> getProduct(int productID) {
+    public List<Product> getProduct(String productCode) {
 
         logger.info("Begin get");
 
-        String sql = "SELECT * FROM product WHERE productID = ?";
+        String sql = "SELECT * FROM product WHERE productCode = ?";
 
         List<Product> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{productID}, new ProductMapper());
+            ret =  jdbcTemplate.query(sql, new Object[]{productCode}, new ProductMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -64,7 +64,7 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<Product> getAllProduct() {
 
-        logger.info("Begin get all");
+        logger.info("Begin get");
 
         String sql = "SELECT * FROM product";
 

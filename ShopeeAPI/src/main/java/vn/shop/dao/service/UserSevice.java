@@ -33,13 +33,13 @@ public interface UserSevice {
     /**
      * Returns an User
      *
-     * @param  userName
+     * @param  userEmail
      * @return
      * <code>
      * List User
      * </code>
      */
-    List<User> getUserByUserName(String userName);
+    List<User> getUserByUserName(String userEmail);
 
     /**
      * Returns an User

@@ -29,7 +29,7 @@ public interface ProductService {
      * List Product
      * </code>
      */
-//    List<Product> getProduct(String productCode);
+    List<Product> getProduct(String productCode);
 
     /**
      * Returns an User

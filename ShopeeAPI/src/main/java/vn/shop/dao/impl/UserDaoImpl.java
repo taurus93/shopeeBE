@@ -82,16 +82,16 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public List<User> getUserByUserName(String userName) {
-        logger.info("Begin getUser by user by user's name");
+    public List<User> getUserByUserName(String userEmail) {
+        logger.info("Begin getUser by user Email");
 
-        String sql = "SELECT * FROM user where userName = ?";
+        String sql = "SELECT * FROM user where userEmail = ?";
 
         List<User> ret = new ArrayList<>();
 
         try {
 
-            ret = jdbcTemplate.query(sql, new Object[]{userName}, new UserMapper());
+            ret = jdbcTemplate.query(sql, new Object[]{userEmail}, new UserMapper());
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
@@ -105,11 +105,11 @@ public class UserDaoImpl implements UserDao{
     public int updateUser(User user) {
         logger.info("Begin updateUserMappingSSO");
 
-        String sql = "UPDATE user SET userName = ?, password = ?, clientID_FK = ? WHERE userID = ?";
+        String sql = "UPDATE user SET userName = ?, password = ? WHERE userEmail = ?";
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPassword(), user.getClientID_FK(), user.getUserID()});
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPassword(), user.getUserEmail()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
