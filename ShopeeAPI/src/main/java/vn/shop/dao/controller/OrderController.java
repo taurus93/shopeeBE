@@ -34,7 +34,7 @@ public class OrderController {
 
     @POST
     @RequestMapping(path = "/insertOrder", produces = MediaType.APPLICATION_JSON_VALUE)
-    public int insertUser(@RequestBody Order order) {
+    public Order insertUser(@RequestBody Order order) {
         return orderService.insertOrder(order);
     }
     //
@@ -42,6 +42,16 @@ public class OrderController {
     @RequestMapping(path = "/getOrder", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Order> getUserByUserName(@RequestParam(name = "orderCode") int orderCode) {
         return orderService.getOrder(orderCode);
+    }
+    @GET
+    @RequestMapping(path = "/getAllOrderByUser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Order> getAllOrderByUser(@RequestParam(name = "userEmail") String userEmail) {
+        return orderService.getAllOrderByUser(userEmail);
+    }
+    @GET
+    @RequestMapping(path = "/deleteOrder", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Order> deleteOrder(@RequestParam(name = "orderCode") String orderCode) {
+        return orderService.deleteOrder(orderCode);
     }
 //
 //    @PUT

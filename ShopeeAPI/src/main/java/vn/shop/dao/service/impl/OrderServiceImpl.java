@@ -21,11 +21,19 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public int insertOrder(Order order) {
+    public Order insertOrder(Order order) {
         return orderDao.insertOrder(order);
     }
     @Override
     public List<Order> getOrder(int orderID) {
         return orderDao.getOrder(orderID);
+    }
+    @Override
+    public List<Order> getAllOrderByUser(String userEmail) {
+        return orderDao.getAllOrderByUser(userEmail);
+    }
+    @Override
+    public List<Order> deleteOrder(String orderCode) {
+        return orderDao.deleteOrder(orderCode);
     }
 }

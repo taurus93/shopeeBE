@@ -8,13 +8,50 @@ public class Order implements Serializable {
      * */
     private static final long serialVersionUID = 1L;
     private Integer orderDetailsID;
+    private String orderCode;
     private String orderDate;
     private Integer quantity;
     private Float totalPrice;
     private Integer productID_FK;
     private String userEmail_FK;
     private Integer paymentID_FK;
+    private String productName;
+    private String productPicture;
+    private String productDescription;
 
+
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductPicture() {
+        return productPicture;
+    }
+
+    public void setProductPicture(String productPicture) {
+        this.productPicture = productPicture;
+    }
     public Integer getOrderDetailsID() {
         return orderDetailsID;
     }

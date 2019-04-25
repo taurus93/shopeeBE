@@ -37,6 +37,7 @@ public class ConstantUtil {
     /*E: product*/
     /*B: product*/
     public static final String orderDetailsID = "orderDetailsID";
+    public static final String orderCode = "orderCode";
     public static final String orderDate = "orderDate";
     public static final String quantity = "quantity";
     public static final String totalPrice = "totalPrice";
@@ -45,8 +46,11 @@ public class ConstantUtil {
     public static final String userEmail_FK = "userEmail_FK";
     public static final String paymentID_FK = "paymentID_FK";
     /*E: product*/
-    /*B: product*/
+    /*B: payment*/
     public static final String paymentID = "paymentID";
     public static final String paymentType = "paymentType";
-    /*E: product*/
+    /*E: payment*/
+    /*B: facture*/
+    public static final String factureID = "factureID";
+    /*E: facture*/
 }

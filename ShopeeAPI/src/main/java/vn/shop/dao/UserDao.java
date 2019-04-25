@@ -18,4 +18,6 @@ public interface UserDao {
     List<User> getUserByUserName(String userName);
 
     int updateUser(User user);
+
+    List<User> authenticate(String userEmail, String password);
 }

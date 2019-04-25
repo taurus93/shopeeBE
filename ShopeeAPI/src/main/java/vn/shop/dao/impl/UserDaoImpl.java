@@ -117,4 +117,27 @@ public class UserDaoImpl implements UserDao{
         logger.info("End updateUserMappingSSO, FAIL");
         return 0;
     }
+
+    @Override
+    public List<User> authenticate(String userEmail, String password) {
+        logger.info("Begin");
+
+        String sql = "SELECT * FROM user where userEmail = ?";
+
+        List<User> ret = new ArrayList<>();
+
+        try {
+
+            ret = jdbcTemplate.query(sql, new Object[]{userEmail}, new UserMapper());
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        if(ret.get(0).getPassword().equals(password)) {
+            return ret;
+        }else {
+            logger.info("End updateUserMappingSSO, FAIL");
+            return null;
+        }
+    }
 }

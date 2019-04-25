@@ -35,4 +35,8 @@ public class UserServiceImpl implements UserSevice {
     public int updateUser(User user) {
         return userDao.updateUser(user);
     }
+    @Override
+    public List<User> authenticate(String userEmail, String password) {
+        return userDao.authenticate(userEmail, password);
+    }
 }

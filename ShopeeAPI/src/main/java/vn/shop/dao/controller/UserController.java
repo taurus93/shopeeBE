@@ -52,4 +52,10 @@ public class UserController {
     public int updateUser(@RequestBody User user) {
         return userSevice.updateUser(user);
     }
+
+    @GET
+    @RequestMapping(path = "/authenticate", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<User> authenticate(@RequestParam(name = "userEmail") String userEmail, @RequestParam(name = "password") String password) {
+        return userSevice.authenticate(userEmail, password);
+    }
 }

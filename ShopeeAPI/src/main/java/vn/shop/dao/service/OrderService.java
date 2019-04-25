@@ -34,7 +34,7 @@ public interface OrderService {
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-    int insertOrder(Order order);
+    Order insertOrder(Order order);
 
     /**
      * Returns an Order
@@ -45,4 +45,15 @@ public interface OrderService {
      * <code> 1 : success</code>
      */
 //    int updateOrder(Order Order);
+    /**
+     * Returns an Order
+     *
+     * @param  userEmail
+     * @return
+     * <code> 0 : unsuccess</code>
+     * <code> 1 : success</code>
+     */
+    List<Order> getAllOrderByUser(String userEmail);
+
+    List<Order> deleteOrder(String orderCode);
 }

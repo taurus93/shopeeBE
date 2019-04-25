@@ -9,11 +9,14 @@ import java.util.List;
  * Created by lttung on 12/17/2018.
  */
 public interface OrderDao {
-    int insertOrder(Order order);
+    Order insertOrder(Order order);
 
     List<Order> getOrder(int orderDetailsID);
 
     List<Order> getAllOrder();
 
+    List<Order> getAllOrderByUser(String userEmail);
+
+    List<Order> deleteOrder(String orderCode);
 //    int updateOrder(Order order);
 }
