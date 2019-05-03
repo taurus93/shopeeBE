@@ -23,6 +23,7 @@ public class UserMapper implements RowMapper<User> {
             result.setUserName(resultSet.getString(ConstantUtil.USER_NAME));
             result.setUserEmail(resultSet.getString(ConstantUtil.userEmail));
             result.setPassword(resultSet.getString(ConstantUtil.PASSWORD));
+            result.setProfile(resultSet.getString(ConstantUtil.profile));
 
         }catch (Exception e) {
 

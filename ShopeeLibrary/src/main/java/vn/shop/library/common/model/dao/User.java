@@ -16,6 +16,8 @@ public class User implements Serializable{
     private String userEmail;
     private String password;
 
+    private String profile;
+
     public Integer getUserID() {
         return userID;
     }
@@ -46,6 +48,14 @@ public class User implements Serializable{
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
 }
