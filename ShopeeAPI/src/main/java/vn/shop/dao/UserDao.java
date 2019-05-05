@@ -20,4 +20,6 @@ public interface UserDao {
     int updateUser(User user);
 
     List<User> authenticate(String userEmail, String password);
+
+    int deleteUser(String userEmail);
 }

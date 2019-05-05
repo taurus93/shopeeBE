@@ -69,4 +69,6 @@ public interface UserSevice {
      * <code> 1 : success</code>
      */
     List<User> authenticate(String userEmail, String password);
+
+    int deleteUser(String userEmail);
 }

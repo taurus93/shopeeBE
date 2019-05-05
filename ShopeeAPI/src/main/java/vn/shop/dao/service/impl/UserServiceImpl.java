@@ -39,4 +39,8 @@ public class UserServiceImpl implements UserSevice {
     public List<User> authenticate(String userEmail, String password) {
         return userDao.authenticate(userEmail, password);
     }
+    @Override
+    public int deleteUser(String userEmail) {
+        return userDao.deleteUser(userEmail);
+    }
 }

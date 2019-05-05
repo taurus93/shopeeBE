@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import vn.shop.dao.UserDao;
 import vn.shop.dao.jdbc.UserMapper;
 import vn.shop.dao.service.UserSevice;
+import vn.shop.library.common.model.dao.Order;
 import vn.shop.library.common.model.dao.User;
 
 import java.util.ArrayList;
@@ -27,10 +28,10 @@ public class UserDaoImpl implements UserDao{
     @Override
     public int insertUser(User user) {
         logger.info("Begin insert user");
-        String sql = "INSERT INTO user(userName, userEmail, password) value(?, ?, ?)";
+        String sql = "INSERT INTO user(userName, userEmail, password, profile) value(?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getUserEmail(), user.getPassword()});
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getUserEmail(), user.getPassword(), user.getProfile()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -139,5 +140,19 @@ public class UserDaoImpl implements UserDao{
             logger.info("End updateUserMappingSSO, FAIL");
             return null;
         }
+    }
+
+    @Override
+    public int deleteUser(String userEmail) {
+        logger.info("Begin");
+
+        String sql = "DELETE FROM user WHERE userEmail = ?";
+
+        try {
+            return jdbcTemplate.update(sql, new Object[]{userEmail});
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+        return 0;
     }
 }

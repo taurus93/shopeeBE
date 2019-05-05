@@ -11,20 +11,20 @@ public class User implements Serializable{
      *
      */
     private static final long serialVersionUID = 1L;
-    private Integer userID;
+//    private Integer userID;
     private String userName;
     private String userEmail;
     private String password;
 
     private String profile;
 
-    public Integer getUserID() {
-        return userID;
-    }
+//    public Integer getUserID() {
+//        return userID;
+//    }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
+//    public void setUserID(Integer userID) {
+//        this.userID = userID;
+//    }
 
     public String getUserName() {
         return userName;

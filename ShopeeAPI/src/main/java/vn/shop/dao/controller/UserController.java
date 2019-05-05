@@ -58,4 +58,10 @@ public class UserController {
     public List<User> authenticate(@RequestParam(name = "userEmail") String userEmail, @RequestParam(name = "password") String password) {
         return userSevice.authenticate(userEmail, password);
     }
+
+    @GET
+    @RequestMapping(path = "/deleteUser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int deleteUser(@RequestParam(name = "userEmail") String userEmail) {
+        return userSevice.deleteUser(userEmail);
+    }
 }
