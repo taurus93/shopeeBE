@@ -11,7 +11,7 @@ public class Product implements Serializable {
      * */
     private static final long serialVersionUID = 1L;
 
-    private Integer productID;
+//    private Integer productID;
     private String productCode;
     private String productName;
     private Float productPrice;
@@ -19,13 +19,13 @@ public class Product implements Serializable {
     private String productDescription;
     private Integer categoryID_FK;
 
-    public Integer getProductID() {
-        return productID;
-    }
-
-    public void setProductID(Integer productID) {
-        this.productID = productID;
-    }
+//    public Integer getProductID() {
+//        return productID;
+//    }
+//
+//    public void setProductID(Integer productID) {
+//        this.productID = productID;
+//    }
 
     public String getProductCode() {
         return productCode;

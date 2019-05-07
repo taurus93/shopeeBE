@@ -39,10 +39,20 @@ public interface PaymentService {
     /**
      * Returns an Payment
      *
-     * @param  Payment
+     * @param  payment
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-//    int updatePayment(Payment payment);
+    int updatePayment(Payment payment);
+
+    /**
+     * Returns an Payment
+     *
+     * @param  paymentCode
+     * @return
+     * <code> 0 : unsuccess</code>
+     * <code> 1 : success</code>
+     */
+    int deletePayment(String paymentCode);
 }

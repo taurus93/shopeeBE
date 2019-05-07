@@ -2,13 +2,13 @@ package vn.shop.library.common.model.dao;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class OrderDetail implements Serializable {
     /**
      *
      * */
     private static final long serialVersionUID = 1L;
     private Integer orderDetailsID;
-    private String orderCode;
+    private String orderDetailCode;
     private String orderDate;
     private Integer quantity;
     private Float totalPrice;
@@ -21,12 +21,12 @@ public class Order implements Serializable {
 
 
 
-    public String getOrderCode() {
-        return orderCode;
+    public String getOrderDetailCode() {
+        return orderDetailCode;
     }
 
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
+    public void setOrderDetailCode(String orderDetailCode) {
+        this.orderDetailCode = orderDetailCode;
     }
 
     public String getProductDescription() {

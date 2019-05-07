@@ -2,7 +2,6 @@ package vn.shop.dao.jdbc;
 
 import org.springframework.jdbc.core.RowMapper;
 import vn.shop.dao.util.ConstantUtil;
-import vn.shop.library.common.model.dao.Order;
 import vn.shop.library.common.model.dao.Payment;
 
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ public class PaymentMapper implements RowMapper<Payment> {
         Payment result = new Payment();
         try {
 
-            result.setPaymentID(resultSet.getInt(ConstantUtil.paymentID));
+            result.setPaymentCode(resultSet.getString(ConstantUtil.paymentCode));
             result.setPaymentType(resultSet.getString(ConstantUtil.paymentType));
 
         }catch (Exception e) {

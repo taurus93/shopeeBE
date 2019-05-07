@@ -21,10 +21,10 @@ public class PaymentDaoImpl implements PaymentDao{
     @Override
     public int insertPayment(Payment payment) {
         logger.info("Begin insert");
-        String sql = "INSERT INTO payment(paymentID, paymentType) value(?, ?)";
+        String sql = "INSERT INTO payment(paymentCode, paymentType) value(?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{payment.getPaymentID(), payment.getPaymentType()});
+            return jdbcTemplate.update(sql, new Object[]{payment.getPaymentCode(), payment.getPaymentType()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -35,16 +35,16 @@ public class PaymentDaoImpl implements PaymentDao{
     }
 
     @Override
-    public List<Payment> getPayment(int paymentID) {
+    public List<Payment> getPayment(int paymentCode) {
 
         logger.info("Begin get Payment");
 
-        String sql = "SELECT * FROM payment WHERE paymentID = ?";
+        String sql = "SELECT * FROM payment WHERE paymentCode = ?";
 
         List<Payment> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{paymentID}, new PaymentMapper());
+            ret =  jdbcTemplate.query(sql, new Object[]{paymentCode}, new PaymentMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -75,23 +75,33 @@ public class PaymentDaoImpl implements PaymentDao{
         return ret;
     }
 
-//    @Override
-//    public int updatePayment(Payment Payment) {
-//        logger.info("Begin update Payment");
-//
-//        String sql = "UPDATE Paymentdetails SET firstName = ?, lastName = ?, phoneNumber = ?" +
-//                ", street = ?, suburb = ?, city = ?" +
-//                ", state = ?, postcode = ? WHERE emailAddress = ?";
-//
-//        try {
-//
-//            return jdbcTemplate.update(sql, new Object[]{Payment.getFirstName(), Payment.getLastName(), Payment.getPhoneNumber(), Payment.getStreet(),
-//                    Payment.getSuburb(), Payment.getCity(), Payment.getState(), Payment.getPostcode()});
-//        } catch (Exception e) {
-//            logger.info(e.getMessage(), e);
-//        }
-//
-//        logger.info("End update Payment, FAIL");
-//        return 0;
-//    }
+    @Override
+    public int updatePayment(Payment payment) {
+        logger.info("Begin update");
+
+        String sql = "UPDATE payment SET paymentType = ? WHERE paymentCode = ?";
+
+        try {
+
+            return jdbcTemplate.update(sql, new Object[]{payment.getPaymentType(), payment.getPaymentCode()});
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        logger.info("End update, FAIL");
+        return 0;
+    }
+    @Override
+    public int deletePayment(String paymentCode) {
+        logger.info("Begin");
+
+        String sql = "DELETE FROM payment WHERE paymentCode = ?";
+
+        try {
+            return jdbcTemplate.update(sql, new Object[]{paymentCode});
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+        return 0;
+    }
 }

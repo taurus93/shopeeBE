@@ -4,11 +4,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import vn.shop.dao.UserDao;
 import vn.shop.dao.jdbc.UserMapper;
-import vn.shop.dao.service.UserSevice;
-import vn.shop.library.common.model.dao.Order;
 import vn.shop.library.common.model.dao.User;
 
 import java.util.ArrayList;

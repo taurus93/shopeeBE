@@ -14,5 +14,7 @@ public interface PaymentDao {
 
     List<Payment> getAllPayment();
 
-//    int updateOrder(Order order);
+    int updatePayment(Payment payment);
+
+    int deletePayment(String paymentCode);
 }

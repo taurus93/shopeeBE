@@ -7,16 +7,25 @@ public class Payment implements Serializable{
      *
      * */
     private static final long serialVersionUID = 1L;
-    private Integer paymentID;
+    private String paymentCode;
+//    private Integer paymentID;
     private String paymentType;
 
-    public Integer getPaymentID() {
-        return paymentID;
+    public String getPaymentCode() {
+        return paymentCode;
     }
 
-    public void setPaymentID(Integer paymentID) {
-        this.paymentID = paymentID;
+    public void setPaymentCode(String paymentCode) {
+        this.paymentCode = paymentCode;
     }
+
+//    public Integer getPaymentID() {
+//        return paymentID;
+//    }
+//
+//    public void setPaymentID(Integer paymentID) {
+//        this.paymentID = paymentID;
+//    }
 
     public String getPaymentType() {
         return paymentType;

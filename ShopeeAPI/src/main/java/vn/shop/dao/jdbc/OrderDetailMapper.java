@@ -2,21 +2,21 @@ package vn.shop.dao.jdbc;
 
 import org.springframework.jdbc.core.RowMapper;
 import vn.shop.dao.util.ConstantUtil;
-import vn.shop.library.common.model.dao.Order;
+import vn.shop.library.common.model.dao.OrderDetail;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OrderMapper implements RowMapper<Order> {
+public class OrderDetailMapper implements RowMapper<OrderDetail> {
 
     @Override
-    public Order mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public OrderDetail mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-        Order result = new Order();
+        OrderDetail result = new OrderDetail();
         try {
 
             result.setOrderDetailsID(resultSet.getInt(ConstantUtil.orderDetailsID));
-            result.setOrderCode(resultSet.getString(ConstantUtil.orderCode));
+            result.setOrderDetailCode(resultSet.getString(ConstantUtil.orderDetailCode));
             result.setOrderDate(resultSet.getString(ConstantUtil.orderDate));
             result.setQuantity(resultSet.getInt(ConstantUtil.quantity));
             result.setTotalPrice(resultSet.getFloat(ConstantUtil.totalPrice));

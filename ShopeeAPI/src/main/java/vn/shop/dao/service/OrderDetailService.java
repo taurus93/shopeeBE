@@ -1,19 +1,19 @@
 package vn.shop.dao.service;
 
-import vn.shop.library.common.model.dao.Order;
+import vn.shop.library.common.model.dao.OrderDetail;
 
 import java.util.List;
 
-public interface OrderService {
+public interface OrderDetailService {
     /**
-     * Returns an Order
+     * Returns an OrderDetail
      *
      * @return
      * <code>
      * List User
      * </code>
      */
-    List<Order> getAllOrder();
+    List<OrderDetail> getAllOrder();
 
     /**
      * Returns an User
@@ -21,39 +21,39 @@ public interface OrderService {
      * @param  OrderCode
      * @return
      * <code>
-     * List Order
+     * List OrderDetail
      * </code>
      */
-    List<Order> getOrder(int OrderCode);
+    List<OrderDetail> getOrder(int OrderCode);
 
     /**
      * Returns an User
      *
-     * @param  order
+     * @param  orderDetail
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-    Order insertOrder(Order order);
+    OrderDetail insertOrder(OrderDetail orderDetail);
 
     /**
-     * Returns an Order
+     * Returns an OrderDetail
      *
-     * @param  Order
+     * @param  OrderDetail
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-//    int updateOrder(Order Order);
+//    int updateOrder(OrderDetail OrderDetail);
     /**
-     * Returns an Order
+     * Returns an OrderDetail
      *
      * @param  userEmail
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-    List<Order> getAllOrderByUser(String userEmail);
+    List<OrderDetail> getAllOrderByUser(String userEmail);
 
-    List<Order> deleteOrder(String orderCode);
+    List<OrderDetail> deleteOrder(String orderCode);
 }

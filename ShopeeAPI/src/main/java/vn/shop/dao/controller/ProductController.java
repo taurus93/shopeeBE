@@ -46,10 +46,16 @@ public class ProductController {
     public List<Product> getUserByUserName(@RequestParam(name = "productCode") String productCode) {
         return productService.getProduct(productCode);
     }
+
+    @GET
+    @RequestMapping(path = "/deleteProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int deleteProduct(@RequestParam(name = "productCode") String productCode) {
+        return productService.deleteProduct(productCode);
+    }
 //
-//    @PUT
-//    @RequestMapping(path = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public int updateUser(@RequestBody User user) {
-//        return clientSevice.updateUser(user);
-//    }
+    @POST
+    @RequestMapping(path = "/updateProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int updateProduct(@RequestBody Product product) {
+        return productService.updateProduct(product);
+    }
 }

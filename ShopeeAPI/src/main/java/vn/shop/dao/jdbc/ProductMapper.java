@@ -20,7 +20,6 @@ public class ProductMapper implements RowMapper<Product> {
         Product result = new Product();
         try {
 
-            result.setProductID(resultSet.getInt(ConstantUtil.productID));
             result.setProductCode(resultSet.getString(ConstantUtil.productCode));
             result.setProductName(resultSet.getString(ConstantUtil.productName));
             result.setProductPrice(resultSet.getFloat(ConstantUtil.productPrice));

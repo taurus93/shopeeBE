@@ -32,4 +32,12 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProduct(String productCode) {
         return productDao.getProduct(productCode);
     }
+    @Override
+    public int deleteProduct(String productCode) {
+        return productDao.deleteProduct(productCode);
+    }
+    @Override
+    public int updateProduct(Product product) {
+        return productDao.updateProduct(product);
+    }
 }

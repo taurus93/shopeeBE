@@ -18,4 +18,6 @@ public interface ProductDao {
 
     int updateProduct(Product product);
 
+    int deleteProduct(String productCode);
+
 }

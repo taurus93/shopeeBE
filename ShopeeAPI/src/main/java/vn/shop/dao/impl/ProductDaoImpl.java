@@ -26,10 +26,10 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public String insertProduct(Product product) {
         logger.info("Begin insert");
-        String sql = "INSERT INTO product(productID, productCode, productName, productPrice, productPicture, productDescription, categoryID_FK) value(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO product(productCode, productName, productPrice, productPicture, productDescription, categoryID_FK) value(?, ?, ?, ?, ?, ?)";
         try {
 
-            return String.valueOf(jdbcTemplate.update(sql, new Object[]{product.getProductID(), product.getProductCode(), product.getProductName(), product.getProductPrice(),
+            return String.valueOf(jdbcTemplate.update(sql, new Object[]{product.getProductCode(), product.getProductName(), product.getProductPrice(),
                     product.getProductPicture(), product.getProductDescription(), product.getCategoryID_FK()}));
 
         } catch (Exception e) {
@@ -89,13 +89,26 @@ public class ProductDaoImpl implements ProductDao{
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{product.getProductName(), product.getProductPrice(),
+            return jdbcTemplate.update(sql, new Object[]{product.getProductName(), product.getProductPrice(), product.getProductPicture(),
                     product.getProductDescription(), product.getCategoryID_FK(), product.getProductCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
         logger.info("End update, FAIL");
+        return 0;
+    }
+    @Override
+    public int deleteProduct(String productCode) {
+        logger.info("Begin");
+
+        String sql = "DELETE FROM product WHERE productCode = ?";
+
+        try {
+            return jdbcTemplate.update(sql, new Object[]{productCode});
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
         return 0;
     }
 }

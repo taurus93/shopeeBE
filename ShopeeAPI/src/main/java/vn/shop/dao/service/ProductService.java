@@ -49,5 +49,15 @@ public interface ProductService {
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-//    int updateProduct(Product product);
+    int updateProduct(Product product);
+
+    /**
+     * Returns
+     *
+     * @param  productCode
+     * @return
+     * <code> 0 : unsuccess</code>
+     * <code> 1 : success</code>
+     */
+     int deleteProduct(String productCode);
 }

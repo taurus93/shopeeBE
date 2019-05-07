@@ -2,10 +2,7 @@ package vn.shop.dao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.shop.dao.service.CategoryService;
 import vn.shop.dao.service.PaymentService;
 import vn.shop.library.common.model.dao.Category;
@@ -42,15 +39,15 @@ public class PaymentController {
         return paymentService.insertPayment(payment);
     }
 //
-//    @GET
-//    @RequestMapping(path = "/getUserByUserName", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<User> getUserByUserName(@RequestParam(name = "userName") String userName) {
-//        return clientSevice.getUserByUserName(userName);
-//    }
-//
-//    @PUT
-//    @RequestMapping(path = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public int updateUser(@RequestBody User user) {
-//        return clientSevice.updateUser(user);
-//    }
+    @GET
+    @RequestMapping(path = "/deletePayment", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int deletePayment(@RequestParam(name = "paymentCode") String paymentCode) {
+        return paymentService.deletePayment(paymentCode);
+    }
+
+    @POST
+    @RequestMapping(path = "/updatePayment", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int updatePayment(@RequestBody Payment payment) {
+        return paymentService.updatePayment(payment);
+    }
 }
