@@ -70,5 +70,19 @@ public interface UserSevice {
      */
     List<User> authenticate(String userEmail, String password);
 
+    /**
+     *
+     * @return
+     * <code> 0 : unsuccess</code>
+     * <code> 1 : success</code>
+     */
     int deleteUser(String userEmail);
+
+    /**
+     *
+     * @return
+     * <code> 0 : unsuccess</code>
+     * <code> 1 : success</code>
+     */
+    int resetPass(String userEmail);
 }

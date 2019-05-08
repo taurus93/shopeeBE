@@ -64,4 +64,10 @@ public class UserController {
     public int deleteUser(@RequestParam(name = "userEmail") String userEmail) {
         return userSevice.deleteUser(userEmail);
     }
+
+    @GET
+    @RequestMapping(path = "/resetPass", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int resetPass(@RequestParam(name = "userEmail") String userEmail) {
+        return userSevice.resetPass(userEmail);
+    }
 }

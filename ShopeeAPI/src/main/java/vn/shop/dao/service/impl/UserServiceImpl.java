@@ -3,6 +3,7 @@ package vn.shop.dao.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.shop.dao.UserDao;
+import vn.shop.dao.impl.GoogleMail;
 import vn.shop.dao.service.UserSevice;
 import vn.shop.library.common.model.dao.User;
 
@@ -43,4 +44,16 @@ public class UserServiceImpl implements UserSevice {
     public int deleteUser(String userEmail) {
         return userDao.deleteUser(userEmail);
     }
+    @Override
+    public int resetPass(String userEmail) {
+        try {
+            new GoogleMail().Send("lethanhtunglc51@gmail.com", "tunglc@51", userEmail, "", "Your new pass word", "123456");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        User user = userDao.getUserByUserName(userEmail).get(0);
+        user.setPassword("123456");
+        return userDao.updateUser(user);
+    }
+
 }

@@ -25,10 +25,11 @@ public class UserDaoImpl implements UserDao{
     @Override
     public int insertUser(User user) {
         logger.info("Begin insert user");
-        String sql = "INSERT INTO user(userName, userEmail, password, profile) value(?, ?, ?, ?)";
+        String sql = "INSERT INTO user(userName, userEmail, password, profile, street, suburb, city, postcode) value(?, ?, ?, ?, ?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getUserEmail(), user.getPassword(), user.getProfile()});
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getUserEmail(), user.getPassword(),
+                    user.getProfile(), user.getStreet(), user.getSuburb(), user.getCity(), user.getPostcode()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -103,11 +104,13 @@ public class UserDaoImpl implements UserDao{
     public int updateUser(User user) {
         logger.info("Begin updateUserMappingSSO");
 
-        String sql = "UPDATE user SET userName = ?, password = ? WHERE userEmail = ?";
+        String sql = "UPDATE user SET userName = ?, password = ?, profile = ?," +
+                "street = ?, suburb = ?, city = ?, postcode = ? WHERE userEmail = ?";
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPassword(), user.getUserEmail()});
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPassword(),
+                    user.getProfile(), user.getStreet(), user.getSuburb(), user.getCity(), user.getPostcode(), user.getUserEmail()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

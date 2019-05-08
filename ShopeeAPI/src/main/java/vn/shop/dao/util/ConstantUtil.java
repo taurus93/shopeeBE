@@ -10,6 +10,10 @@ public class ConstantUtil {
     public static final String userEmail = "userEmail";
     public static final String PASSWORD = "password";
     public static final String profile = "profile";
+    public static final String street = "street";
+    public static final String suburb = "suburb";
+    public static final String city = "city";
+    public static final String postcode = "postcode";
     public static final String ClientID_FK = "clientID_FK";
     public static final String CLIENT_ID = "clientID";
     public static final String FIRST_NAME = "firstName";

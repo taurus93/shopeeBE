@@ -15,8 +15,12 @@ public class User implements Serializable{
     private String userName;
     private String userEmail;
     private String password;
-
     private String profile;
+    private String street;
+    private String suburb;
+    private String city;
+//    private String state;
+    private String postcode;
 
 //    public Integer getUserID() {
 //        return userID;
@@ -25,6 +29,47 @@ public class User implements Serializable{
 //    public void setUserID(Integer userID) {
 //        this.userID = userID;
 //    }
+
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getSuburb() {
+        return suburb;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+//    public String getState() {
+//        return state;
+//    }
+//
+//    public void setState(String state) {
+//        this.state = state;
+//    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
 
     public String getUserName() {
         return userName;
