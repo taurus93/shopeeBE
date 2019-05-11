@@ -38,9 +38,9 @@ public class FactureController {
     }
 
     @GET
-    @RequestMapping(path = "/getFactureByOrderID", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Facture> getFactureByOrderID(@RequestParam(name = "orderID") int orderID) {
-        return factureService.getFactureByOrderID(orderID);
+    @RequestMapping(path = "/getFactureByUserEmail", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Facture> getFactureByUserEmail(@RequestParam(name = "userEmail") String userEmail) {
+        return factureService.getFactureByUserEmail(userEmail);
     }
 //
 //    @PUT

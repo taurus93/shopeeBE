@@ -46,6 +46,11 @@ public class ProductController {
     public List<Product> getUserByUserName(@RequestParam(name = "productCode") String productCode) {
         return productService.getProduct(productCode);
     }
+    @GET
+    @RequestMapping(path = "/getProductByCategory", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getProductByCategory(@RequestParam(name = "categoryCode") String categoryCode) {
+        return productService.getProductByCategory(categoryCode);
+    }
 
     @GET
     @RequestMapping(path = "/deleteProduct", produces = MediaType.APPLICATION_JSON_VALUE)

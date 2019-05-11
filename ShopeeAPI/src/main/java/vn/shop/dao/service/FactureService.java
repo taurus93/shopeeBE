@@ -35,7 +35,7 @@ public interface FactureService {
      * List Facture
      * </code>
      */
-    List<Facture> getFactureByOrderID(int orderID);
+    List<Facture> getFactureByUserEmail(String userEmail);
 
     /**
      * Returns an Facture

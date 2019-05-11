@@ -25,7 +25,7 @@ public class ProductMapper implements RowMapper<Product> {
             result.setProductPrice(resultSet.getFloat(ConstantUtil.productPrice));
             result.setProductPicture(resultSet.getString(ConstantUtil.productPicture));
             result.setProductDescription(resultSet.getString(ConstantUtil.productDescription));
-            result.setCategoryID_FK(resultSet.getInt(ConstantUtil.categoryID_FK));
+            result.setCategoryCode(resultSet.getString(ConstantUtil.categoryCode));
 
         }catch (Exception e) {
 

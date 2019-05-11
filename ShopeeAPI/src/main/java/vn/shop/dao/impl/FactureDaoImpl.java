@@ -6,7 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import vn.shop.dao.FactureDao;
 import vn.shop.dao.jdbc.FactureMapper;
+import vn.shop.dao.jdbc.OrderProductMapper;
 import vn.shop.library.common.model.dao.Facture;
+import vn.shop.library.common.model.dao.OrderProduct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +24,41 @@ public class FactureDaoImpl implements FactureDao{
     @Override
     public int insertFacture(Facture facture) {
         logger.info("Begin insert Facture");
-        String sql = "INSERT INTO facture(orderCode) value(?)";
+
+//        get order product
+        String sql = "SELECT * FROM orderproduct WHERE orderCode = ?";
+
+        List<OrderProduct> ret = new ArrayList<>();
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{facture.getOrderCode()});
+            ret =  jdbcTemplate.query(sql, new Object[]{facture.getOrderCode()}, new OrderProductMapper());
 
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        String productName = ret.get(0).getProductName();
+        int quantity = ret.get(0).getQuantity();
+        int status = 2;
+        Float totalPrice = ret.get(0).getTotalPrice();
+
+//        insert facture
+        String sql1 = "INSERT INTO facture(orderCode, userEmail, productName, quantity, totalPrice, status) value(?, ?, ?, ?, ?, ?)";
+        try {
+
+            return jdbcTemplate.update(sql1, new Object[]{facture.getOrderCode(), facture.getUserEmail(),
+            productName, quantity, totalPrice, status});
+
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        // update order product
+        String sql3 = "UPDATE orderproduct SET status = ? where orderCode = ?";
+
+        try {
+
+            return jdbcTemplate.update(sql, new Object[]{status, facture.getOrderCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
@@ -57,16 +89,16 @@ public class FactureDaoImpl implements FactureDao{
     }
 
     @Override
-    public List<Facture> getFactureByOrderID(int orderID) {
+    public List<Facture> getFactureByUserEmail(String userEmail) {
 
         logger.info("Begin get list Facture");
 
-        String sql = "SELECT * FROM facture WHERE orderCode = ?";
+        String sql = "SELECT * FROM facture WHERE userEmail = ?";
 
         List<Facture> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{orderID}, new FactureMapper());
+            ret =  jdbcTemplate.query(sql, new Object[]{userEmail}, new FactureMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -105,7 +137,7 @@ public class FactureDaoImpl implements FactureDao{
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{facture.getFactureID(), facture.getOrderCode()});
+            return jdbcTemplate.update(sql, new Object[]{facture.getOrderCode(), facture.getOrderCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

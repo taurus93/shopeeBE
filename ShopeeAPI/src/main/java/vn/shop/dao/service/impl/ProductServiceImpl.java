@@ -33,6 +33,10 @@ public class ProductServiceImpl implements ProductService {
         return productDao.getProduct(productCode);
     }
     @Override
+    public List<Product> getProductByCategory(String categoryCode) {
+        return productDao.getProductByCategory(categoryCode);
+    }
+    @Override
     public int deleteProduct(String productCode) {
         return productDao.deleteProduct(productCode);
     }

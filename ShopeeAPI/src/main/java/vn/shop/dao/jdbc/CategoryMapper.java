@@ -19,7 +19,7 @@ public class CategoryMapper implements RowMapper<Category> {
         Category result = new Category();
         try {
 
-            result.setCategoryID(resultSet.getInt(ConstantUtil.CATEGORY_ID));
+            result.setCategoryCode(resultSet.getString(ConstantUtil.categoryCode));
             result.setCategoryName(resultSet.getString(ConstantUtil.CATEGORY_NAME));
             result.setCatDescription(resultSet.getString(ConstantUtil.CAT_DESCRIPTION));
             result.setCatPicture(resultSet.getString(ConstantUtil.CAT_PICTURE));

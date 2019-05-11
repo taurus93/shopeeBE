@@ -14,6 +14,8 @@ public interface ProductDao {
 
     List<Product> getProduct(String productCode);
 
+    List<Product> getProductByCategory(String categoryCode);
+
     List<Product> getAllProduct();
 
     int updateProduct(Product product);

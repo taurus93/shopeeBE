@@ -26,7 +26,7 @@ public class ConstantUtil {
     public static final String STATE = "state";
     public static final String POSTCODE = "postcode";
     /*B: category*/
-    public static final String CATEGORY_ID = "categoryID";
+    public static final String categoryCode = "categoryCode";
     public static final String CATEGORY_NAME = "categoryName";
     public static final String CAT_DESCRIPTION = "catDescription";
     public static final String CAT_PICTURE = "catPicture";
@@ -60,4 +60,10 @@ public class ConstantUtil {
     /*B: facture*/
     public static final String factureID = "factureID";
     /*E: facture*/
+    /*B: OrderUser*/
+    /*E: OrderUser*/
+    /*B: OrderProduct*/
+    public static final String status = "status";
+    public static final String price = "price";
+    /*E: OrderProduct*/
 }

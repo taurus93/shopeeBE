@@ -26,10 +26,10 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public String insertCategory(Category category) {
         logger.info("Begin insert category");
-        String sql = "INSERT INTO category(categoryID, categoryName, catDescription, catPicture) value(?, ?, ?, ?)";
+        String sql = "INSERT INTO category(categoryCode, categoryName, catDescription, catPicture) value(?, ?, ?, ?)";
         try {
 
-            return String.valueOf(jdbcTemplate.update(sql, new Object[]{category.getCategoryID(), category.getCategoryName(), category.getCatDescription(), category.getCatPicture()}));
+            return String.valueOf(jdbcTemplate.update(sql, new Object[]{category.getCategoryCode(), category.getCategoryName(), category.getCatDescription(), category.getCatPicture()}));
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -40,16 +40,16 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public List<Category> getCategory(int categoryID) {
+    public List<Category> getCategory(String categoryCode) {
 
         logger.info("Begin get category by category id");
 
-        String sql = "SELECT * FROM category WHERE categoryID = ?";
+        String sql = "SELECT * FROM category WHERE categoryCode = ?";
 
         List<Category> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{categoryID}, new CategoryMapper());
+            ret =  jdbcTemplate.query(sql, new Object[]{categoryCode}, new CategoryMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);

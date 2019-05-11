@@ -10,19 +10,29 @@ public class Category implements Serializable{
      *
      * */
     private static final long serialVersionUID = 1L;
-    private Integer categoryID;
+//    private Integer categoryID;
+    private String categoryCode;
     private String categoryName;
     private String catDescription;
     private String catPicture;
 
 
-    public Integer getCategoryID() {
-        return categoryID;
+
+    public String getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCategoryID(Integer categoryID) {
-        this.categoryID = categoryID;
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
     }
+
+//    public Integer getCategoryID() {
+//        return categoryID;
+//    }
+//
+//    public void setCategoryID(Integer categoryID) {
+//        this.categoryID = categoryID;
+//    }
 
     public String getCategoryName() {
         return categoryName;

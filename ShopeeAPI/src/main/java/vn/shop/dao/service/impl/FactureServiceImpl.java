@@ -24,8 +24,8 @@ public class FactureServiceImpl implements FactureService{
         return factureDao.getFacture(factureID);
     }
     @Override
-    public List<Facture> getFactureByOrderID(int orderID) {
-        return factureDao.getFactureByOrderID(orderID);
+    public List<Facture> getFactureByUserEmail(String userEmail) {
+        return factureDao.getFactureByUserEmail(userEmail);
     }
     @Override
     public int insertFacture(Facture facture) {

@@ -10,7 +10,7 @@ import java.util.List;
 public interface CategoryDao {
     String insertCategory(Category Category);
 
-    List<Category> getCategory(int categoryID);
+    List<Category> getCategory(String categoryCode);
 
     List<Category> getAllCategory();
 

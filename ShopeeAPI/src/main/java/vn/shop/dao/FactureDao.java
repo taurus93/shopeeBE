@@ -13,7 +13,7 @@ public interface FactureDao {
 
     List<Facture> getFacture(int factureID);
 
-    List<Facture> getFactureByOrderID(int orderID);
+    List<Facture> getFactureByUserEmail(String userEmail);
 
     List<Facture> getAllFacture();
 

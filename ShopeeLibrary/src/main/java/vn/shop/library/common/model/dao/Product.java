@@ -17,7 +17,7 @@ public class Product implements Serializable {
     private Float productPrice;
     private String productPicture;
     private String productDescription;
-    private Integer categoryID_FK;
+    private String categoryCode;
 
 //    public Integer getProductID() {
 //        return productID;
@@ -26,6 +26,15 @@ public class Product implements Serializable {
 //    public void setProductID(Integer productID) {
 //        this.productID = productID;
 //    }
+
+
+    public String getCategoryCode() {
+        return categoryCode;
+    }
+
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
+    }
 
     public String getProductCode() {
         return productCode;
@@ -67,11 +76,4 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
     }
 
-    public Integer getCategoryID_FK() {
-        return categoryID_FK;
-    }
-
-    public void setCategoryID_FK(Integer categoryID_FK) {
-        this.categoryID_FK = categoryID_FK;
-    }
 }

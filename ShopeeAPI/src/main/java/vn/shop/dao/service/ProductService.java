@@ -23,6 +23,17 @@ public interface ProductService {
     /**
      * Returns an User
      *
+     * @param  categoryCode
+     * @return
+     * <code>
+     * List Product
+     * </code>
+     */
+    List<Product> getProductByCategory(String categoryCode);
+
+    /**
+     * Returns an User
+     *
      * @param  productCode
      * @return
      * <code>

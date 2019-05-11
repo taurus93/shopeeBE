@@ -26,11 +26,11 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public String insertProduct(Product product) {
         logger.info("Begin insert");
-        String sql = "INSERT INTO product(productCode, productName, productPrice, productPicture, productDescription, categoryID_FK) value(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO product(productCode, productName, productPrice, productPicture, productDescription, categoryCode) value(?, ?, ?, ?, ?, ?)";
         try {
 
             return String.valueOf(jdbcTemplate.update(sql, new Object[]{product.getProductCode(), product.getProductName(), product.getProductPrice(),
-                    product.getProductPicture(), product.getProductDescription(), product.getCategoryID_FK()}));
+                    product.getProductPicture(), product.getProductDescription(), product.getCategoryCode()}));
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -51,6 +51,27 @@ public class ProductDaoImpl implements ProductDao{
         try {
 
             ret =  jdbcTemplate.query(sql, new Object[]{productCode}, new ProductMapper());
+
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        int result = (ret == null ? 0 : ret.size());
+        logger.info("End get list category, result: Success" + result);
+        return ret;
+    }
+
+    @Override
+    public List<Product> getProductByCategory(String categoryCode) {
+
+        logger.info("Begin get");
+
+        String sql = "SELECT * FROM product WHERE categoryCode = ?";
+
+        List<Product> ret = new ArrayList<>();
+        try {
+
+            ret =  jdbcTemplate.query(sql, new Object[]{categoryCode}, new ProductMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -85,12 +106,12 @@ public class ProductDaoImpl implements ProductDao{
     public int updateProduct(Product product) {
         logger.info("Begin update");
 
-        String sql = "UPDATE product SET productName = ?, productPrice = ?, productPicture = ?, productDescription = ?, categoryID_FK = ? WHERE productCode = ?";
+        String sql = "UPDATE product SET productName = ?, productPrice = ?, productPicture = ?, productDescription = ?, categoryCode = ? WHERE productCode = ?";
 
         try {
 
             return jdbcTemplate.update(sql, new Object[]{product.getProductName(), product.getProductPrice(), product.getProductPicture(),
-                    product.getProductDescription(), product.getCategoryID_FK(), product.getProductCode()});
+                    product.getProductDescription(), product.getCategoryCode(), product.getProductCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
