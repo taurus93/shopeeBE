@@ -43,12 +43,12 @@ public class OrderProductDaoImpl implements OrderProductDao {
         String productName = ret.get(0).getProductName();
         String productDescription = ret.get(0).getProductDescription();
         String sql1 = "INSERT INTO orderproduct(orderCode, productCode, totalPrice, orderDate, quantity, " +
-                "userEmail, productPicture, productName, productDescription, status) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "userEmail, productPicture, productName, productDescription, status, paymentCode) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
 
             return jdbcTemplate.update(sql1, new Object[]{orderProduct.getOrderCode(), orderProduct.getProductCode(), totalPrice,
                     orderProduct.getOrderDate(), orderProduct.getQuantity(),
-                    orderProduct.getUserEmail(), productPicture, productName, productDescription, orderProduct.getStatus()});
+                    orderProduct.getUserEmail(), productPicture, productName, productDescription, orderProduct.getStatus(), orderProduct.getPaymentCode()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -124,6 +124,14 @@ public class OrderProductDaoImpl implements OrderProductDao {
 
         try {
             return jdbcTemplate.update(sql, new Object[]{orderCode});
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        String sql1 = "DELETE FROM facture WHERE orderCode = ?";
+
+        try {
+            return jdbcTemplate.update(sql1, new Object[]{orderCode});
         }catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

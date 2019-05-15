@@ -11,7 +11,17 @@ public class OrderProduct {
     private String productName;
     private String productDescription;
     private int status;
+    private String paymentCode;
 
+
+
+    public String getPaymentCode() {
+        return paymentCode;
+    }
+
+    public void setPaymentCode(String paymentCode) {
+        this.paymentCode = paymentCode;
+    }
 
     public int getStatus() {
         return status;

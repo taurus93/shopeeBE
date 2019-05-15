@@ -26,6 +26,7 @@ public class OrderProductMapper implements RowMapper<OrderProduct> {
             result.setProductName(resultSet.getString(ConstantUtil.productName));
             result.setProductDescription(resultSet.getString(ConstantUtil.productDescription));
             result.setStatus(resultSet.getInt(ConstantUtil.status));
+            result.setPaymentCode(resultSet.getString(ConstantUtil.paymentCode));
 
         }catch (Exception e) {
 

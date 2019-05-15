@@ -31,7 +31,7 @@ public class FactureDaoImpl implements FactureDao{
         List<OrderProduct> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{facture.getOrderCode()}, new OrderProductMapper());
+            ret = jdbcTemplate.query(sql, new Object[]{facture.getOrderCode()}, new OrderProductMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -46,7 +46,7 @@ public class FactureDaoImpl implements FactureDao{
         String sql1 = "INSERT INTO facture(orderCode, userEmail, productName, quantity, totalPrice, status) value(?, ?, ?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql1, new Object[]{facture.getOrderCode(), facture.getUserEmail(),
+            jdbcTemplate.update(sql1, new Object[]{facture.getOrderCode(), facture.getUserEmail(),
             productName, quantity, totalPrice, status});
 
         } catch (Exception e) {
@@ -58,13 +58,13 @@ public class FactureDaoImpl implements FactureDao{
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{status, facture.getOrderCode()});
+            jdbcTemplate.update(sql3, new Object[]{status, facture.getOrderCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
         logger.info("End insert, result: Success");
-        return 0;
+        return 1;
     }
 
     @Override
