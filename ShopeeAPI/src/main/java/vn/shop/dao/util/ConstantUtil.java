@@ -59,6 +59,7 @@ public class ConstantUtil {
     /*E: payment*/
     /*B: facture*/
     public static final String factureID = "factureID";
+    public static final String factureCode = "factureCode";
     /*E: facture*/
     /*B: OrderUser*/
     /*E: OrderUser*/

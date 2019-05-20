@@ -42,11 +42,11 @@ public class OrderProductDaoImpl implements OrderProductDao {
         String productPicture = ret.get(0).getProductPicture();
         String productName = ret.get(0).getProductName();
         String productDescription = ret.get(0).getProductDescription();
-        String sql1 = "INSERT INTO orderproduct(orderCode, productCode, totalPrice, orderDate, quantity, " +
-                "userEmail, productPicture, productName, productDescription, status, paymentCode) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql1 = "INSERT INTO orderproduct(orderCode, productCode, factureCode, totalPrice, orderDate, quantity, " +
+                "userEmail, productPicture, productName, productDescription, status, paymentCode) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql1, new Object[]{orderProduct.getOrderCode(), orderProduct.getProductCode(), totalPrice,
+            return jdbcTemplate.update(sql1, new Object[]{orderProduct.getOrderCode(), orderProduct.getProductCode(), "", totalPrice,
                     orderProduct.getOrderDate(), orderProduct.getQuantity(),
                     orderProduct.getUserEmail(), productPicture, productName, productDescription, orderProduct.getStatus(), orderProduct.getPaymentCode()});
 

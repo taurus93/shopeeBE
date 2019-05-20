@@ -26,12 +26,12 @@ public class FactureDaoImpl implements FactureDao{
         logger.info("Begin insert Facture");
 
 //        get order product
-        String sql = "SELECT * FROM orderproduct WHERE orderCode = ?";
+        String sql = "SELECT * FROM orderproduct WHERE factureCode = ?";
 
         List<OrderProduct> ret = new ArrayList<>();
         try {
 
-            ret = jdbcTemplate.query(sql, new Object[]{facture.getOrderCode()}, new OrderProductMapper());
+            ret = jdbcTemplate.query(sql, new Object[]{facture.getFactureCode()}, new OrderProductMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -43,10 +43,10 @@ public class FactureDaoImpl implements FactureDao{
         Float totalPrice = ret.get(0).getTotalPrice();
 
 //        insert facture
-        String sql1 = "INSERT INTO facture(orderCode, userEmail, productName, quantity, totalPrice, status) value(?, ?, ?, ?, ?, ?)";
+        String sql1 = "INSERT INTO facture(factureCode, userEmail, productName, quantity, totalPrice, status) value(?, ?, ?, ?, ?, ?)";
         try {
 
-            jdbcTemplate.update(sql1, new Object[]{facture.getOrderCode(), facture.getUserEmail(),
+            jdbcTemplate.update(sql1, new Object[]{facture.getFactureCode(), facture.getUserEmail(),
             productName, quantity, totalPrice, status});
 
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class FactureDaoImpl implements FactureDao{
 
         try {
 
-            jdbcTemplate.update(sql3, new Object[]{status, facture.getOrderCode()});
+            jdbcTemplate.update(sql3, new Object[]{status, ret.get(0).getOrderCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
@@ -133,11 +133,12 @@ public class FactureDaoImpl implements FactureDao{
     public int updateFacture(Facture facture) {
         logger.info("Begin updateFactureMappingSSO");
 
-        String sql = "UPDATE facture SET orderDetailID_FK = ? WHERE factureID = ?";
+        String sql = "UPDATE facture SET userEmail = ?, productName = ?, quantity = ?, totalPrice = ?, status = ? WHERE factureCode = ?";
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{facture.getOrderCode(), facture.getOrderCode()});
+            return jdbcTemplate.update(sql, new Object[]{facture.getUserEmail(), facture.getProductName(),
+                    facture.getQuantity(), facture.getStatus(), facture.getFactureCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

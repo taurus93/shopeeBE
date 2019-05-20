@@ -5,8 +5,8 @@ public class Facture {
      *
      * */
     private static final long serialVersionUID = 1L;
-//    private Integer factureID;
-    private String orderCode;
+    //    private Integer factureID;
+    private String factureCode;
     private String userEmail;
     private String productName;
     private int quantity;
@@ -64,14 +64,14 @@ public class Facture {
         this.userEmail = userEmail;
     }
 
-
-    public String getOrderCode() {
-        return orderCode;
+    public String getFactureCode() {
+        return factureCode;
     }
 
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
+    public void setFactureCode(String factureCode) {
+        this.factureCode = factureCode;
     }
+
 
 
 }
