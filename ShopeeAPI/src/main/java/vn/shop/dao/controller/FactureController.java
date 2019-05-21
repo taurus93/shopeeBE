@@ -1,5 +1,6 @@
 package vn.shop.dao.controller;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,9 @@ public class FactureController {
 
     @POST
     @RequestMapping(path = "/insertFacture", produces = MediaType.APPLICATION_JSON_VALUE)
-    public int insertFacture(@RequestBody Facture facture) {
-        return factureService.insertFacture(facture);
+    public int insertFacture(@RequestBody String body) {
+        JSONObject jsonObject = new JSONObject(body);
+        return factureService.insertFacture(jsonObject);
     }
 
     @GET

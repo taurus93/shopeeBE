@@ -3,6 +3,7 @@ package vn.shop.library.common.model.dao;
 public class OrderProduct {
     private String orderCode;
     private String productCode;
+    private String factureCode;
     private Float totalPrice;
     private String orderDate;
     private int quantity;
@@ -13,6 +14,15 @@ public class OrderProduct {
     private int status;
     private String paymentCode;
 
+
+
+    public String getFactureCode() {
+        return factureCode;
+    }
+
+    public void setFactureCode(String factureCode) {
+        this.factureCode = factureCode;
+    }
 
 
     public String getPaymentCode() {

@@ -1,5 +1,6 @@
 package vn.shop.dao.service;
 
+import org.json.JSONObject;
 import vn.shop.library.common.model.dao.Facture;
 
 import java.util.List;
@@ -9,12 +10,12 @@ public interface FactureService {
     /**
      * Returns boolean
      *
-     * @param  facture
+     * @param  jsonObject
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-     int insertFacture(Facture facture);
+     int insertFacture(JSONObject jsonObject);
 
     /**
      * Returns an Facture

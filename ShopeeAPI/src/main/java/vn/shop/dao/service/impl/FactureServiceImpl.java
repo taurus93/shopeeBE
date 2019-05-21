@@ -1,5 +1,6 @@
 package vn.shop.dao.service.impl;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.shop.dao.FactureDao;
@@ -28,7 +29,7 @@ public class FactureServiceImpl implements FactureService{
         return factureDao.getFactureByUserEmail(userEmail);
     }
     @Override
-    public int insertFacture(Facture facture) {
-        return factureDao.insertFacture(facture);
+    public int insertFacture(JSONObject jsonObject) {
+        return factureDao.insertFacture(jsonObject);
     }
 }

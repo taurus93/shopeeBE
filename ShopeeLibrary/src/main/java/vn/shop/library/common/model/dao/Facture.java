@@ -8,7 +8,6 @@ public class Facture {
     //    private Integer factureID;
     private String factureCode;
     private String userEmail;
-    private String productName;
     private int quantity;
     private Float totalPrice;
     private int status;
@@ -28,15 +27,6 @@ public class Facture {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public int getQuantity() {

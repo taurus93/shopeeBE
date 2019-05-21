@@ -19,7 +19,6 @@ public class FactureMapper implements RowMapper<Facture>{
 //            result.setFactureID(resultSet.getInt(ConstantUtil.factureID));
             result.setFactureCode(resultSet.getString(ConstantUtil.factureCode));
             result.setUserEmail(resultSet.getString(ConstantUtil.userEmail));
-            result.setProductName(resultSet.getString(ConstantUtil.productName));
             result.setQuantity(resultSet.getInt(ConstantUtil.quantity));
             result.setTotalPrice(resultSet.getFloat(ConstantUtil.totalPrice));
             result.setStatus(resultSet.getInt(ConstantUtil.status));

@@ -1,5 +1,8 @@
 package vn.shop.dao.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,43 +25,45 @@ public class FactureDaoImpl implements FactureDao{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int insertFacture(Facture facture) {
+    public int insertFacture(JSONObject jsonObject) {
         logger.info("Begin insert Facture");
 
-//        get order product
-        String sql = "SELECT * FROM orderproduct WHERE factureCode = ?";
-
-        List<OrderProduct> ret = new ArrayList<>();
+        JSONArray ret = jsonObject.getJSONArray("orderList");
+        Facture facture = new Facture();
         try {
-
-            ret = jdbcTemplate.query(sql, new Object[]{facture.getFactureCode()}, new OrderProductMapper());
-
-        } catch (Exception e) {
+            facture = new ObjectMapper().readValue(jsonObject.get("facture").toString(), Facture.class);
+        }catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
-        String productName = ret.get(0).getProductName();
-        int quantity = ret.get(0).getQuantity();
+        int quantity = facture.getQuantity();
         int status = 2;
-        Float totalPrice = ret.get(0).getTotalPrice();
+        Float totalPrice = facture.getTotalPrice();
 
 //        insert facture
-        String sql1 = "INSERT INTO facture(factureCode, userEmail, productName, quantity, totalPrice, status) value(?, ?, ?, ?, ?, ?)";
+        String sql1 = "INSERT INTO facture(factureCode, userEmail, quantity, totalPrice, status) value(?, ?, ?, ?, ?)";
         try {
 
             jdbcTemplate.update(sql1, new Object[]{facture.getFactureCode(), facture.getUserEmail(),
-            productName, quantity, totalPrice, status});
+                    quantity, totalPrice, status});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
         // update order product
-        String sql3 = "UPDATE orderproduct SET status = ? where orderCode = ?";
+        String sql3 = "UPDATE orderproduct SET status = ?, factureCode = ? where orderCode = ?";
 
         try {
-
-            jdbcTemplate.update(sql3, new Object[]{status, ret.get(0).getOrderCode()});
+            for(int i=0; i<ret.length(); i++) {
+                OrderProduct orderProduct = new OrderProduct();
+                try {
+                    orderProduct = new ObjectMapper().readValue(ret.get(i).toString(), OrderProduct.class);
+                    jdbcTemplate.update(sql3, new Object[]{status, facture.getFactureCode(), orderProduct.getOrderCode()});
+                }catch (Exception e) {
+                    logger.info(e.getMessage(), e);
+                }
+            }
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
@@ -137,7 +142,7 @@ public class FactureDaoImpl implements FactureDao{
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{facture.getUserEmail(), facture.getProductName(),
+            return jdbcTemplate.update(sql, new Object[]{facture.getUserEmail(),
                     facture.getQuantity(), facture.getStatus(), facture.getFactureCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
