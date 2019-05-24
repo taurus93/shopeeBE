@@ -29,7 +29,7 @@ public class FileController {
     private FileStorageService fileStorageService;
 
     @RequestMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public int uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -37,17 +37,16 @@ public class FileController {
                 .path(fileName)
                 .toUriString();
 
-        return new UploadFileResponse(fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
+        return 1;
     }
 
-    @RequestMapping("/uploadMultipleFiles")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-        return Arrays.asList(files)
-                .stream()
-                .map(file -> uploadFile(file))
-                .collect(Collectors.toList());
-    }
+//    @RequestMapping("/uploadMultipleFiles")
+//    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+//        return Arrays.asList(files)
+//                .stream()
+//                .map(file -> uploadFile(file))
+//                .collect(Collectors.toList());
+//    }
 
     @RequestMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
