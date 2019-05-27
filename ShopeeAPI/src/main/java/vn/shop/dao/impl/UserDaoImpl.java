@@ -25,10 +25,10 @@ public class UserDaoImpl implements UserDao{
     @Override
     public int insertUser(User user) {
         logger.info("Begin insert user");
-        String sql = "INSERT INTO user(userName, userEmail, password, profile, street, suburb, city, postcode) value(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user(userName, phoneNumber, userEmail, password, profile, street, suburb, city, postcode) value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getUserEmail(), user.getPassword(),
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPhoneNumber(), user.getUserEmail(), user.getPassword(),
                     user.getProfile(), user.getStreet(), user.getSuburb(), user.getCity(), user.getPostcode()});
 
         } catch (Exception e) {

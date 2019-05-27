@@ -7,6 +7,7 @@ public class ConstantUtil {
 
     public static final String USER_ID = "userID";
     public static final String USER_NAME = "userName";
+    public static final String phoneNumber = "phoneNumber";
     public static final String userEmail = "userEmail";
     public static final String PASSWORD = "password";
     public static final String profile = "profile";

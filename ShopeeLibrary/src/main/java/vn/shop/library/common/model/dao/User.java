@@ -13,6 +13,7 @@ public class User implements Serializable{
     private static final long serialVersionUID = 1L;
 //    private Integer userID;
     private String userName;
+    private String phoneNumber;
     private String userEmail;
     private String password;
     private String profile;
@@ -30,6 +31,15 @@ public class User implements Serializable{
 //        this.userID = userID;
 //    }
 
+
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getStreet() {
         return street;
