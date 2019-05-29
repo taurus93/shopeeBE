@@ -104,12 +104,12 @@ public class UserDaoImpl implements UserDao{
     public int updateUser(User user) {
         logger.info("Begin updateUserMappingSSO");
 
-        String sql = "UPDATE user SET userName = ?, password = ?, profile = ?," +
+        String sql = "UPDATE user SET userName = ?, phoneNumber = ?, password = ?, profile = ?," +
                 "street = ?, suburb = ?, city = ?, postcode = ? WHERE userEmail = ?";
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPassword(),
+            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPhoneNumber(), user.getPassword(),
                     user.getProfile(), user.getStreet(), user.getSuburb(), user.getCity(), user.getPostcode(), user.getUserEmail()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);

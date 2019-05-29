@@ -37,15 +37,15 @@ public class FactureDaoImpl implements FactureDao{
         }
 
         int quantity = facture.getQuantity();
-        int status = 2;
+        String status = "choThanhToan";
         Float totalPrice = facture.getTotalPrice();
 
 //        insert facture
-        String sql1 = "INSERT INTO facture(factureCode, userEmail, quantity, totalPrice, status) value(?, ?, ?, ?, ?)";
+        String sql1 = "INSERT INTO facture(factureCode, userEmail, quantity, totalPrice, status, receiverCode) value(?, ?, ?, ?, ?, ?)";
         try {
 
             jdbcTemplate.update(sql1, new Object[]{facture.getFactureCode(), facture.getUserEmail(),
-                    quantity, totalPrice, status});
+                    quantity, totalPrice, status, "1"});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -59,7 +59,7 @@ public class FactureDaoImpl implements FactureDao{
                 OrderProduct orderProduct = new OrderProduct();
                 try {
                     orderProduct = new ObjectMapper().readValue(ret.get(i).toString(), OrderProduct.class);
-                    jdbcTemplate.update(sql3, new Object[]{status, facture.getFactureCode(), orderProduct.getOrderCode()});
+                    jdbcTemplate.update(sql3, new Object[]{2, facture.getFactureCode(), orderProduct.getOrderCode()});
                 }catch (Exception e) {
                     logger.info(e.getMessage(), e);
                 }
@@ -73,16 +73,16 @@ public class FactureDaoImpl implements FactureDao{
     }
 
     @Override
-    public List<Facture> getFacture(int factureID) {
+    public List<Facture> getFacture(String factureCode) {
 
         logger.info("Begin get list Facture");
 
-        String sql = "SELECT * FROM facture WHERE factureID = ?";
+        String sql = "SELECT * FROM facture WHERE factureCode = ?";
 
         List<Facture> ret = new ArrayList<>();
         try {
 
-            ret =  jdbcTemplate.query(sql, new Object[]{factureID}, new FactureMapper());
+            ret =  jdbcTemplate.query(sql, new Object[]{factureCode}, new FactureMapper());
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);

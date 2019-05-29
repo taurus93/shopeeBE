@@ -18,6 +18,8 @@ public interface ProductDao {
 
     List<Product> getAllProduct();
 
+    List<Product> getAllProductByFacture(String factureCode);
+
     int updateProduct(Product product);
 
     int deleteProduct(String productCode);

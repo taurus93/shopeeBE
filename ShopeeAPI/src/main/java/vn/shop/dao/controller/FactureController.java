@@ -44,6 +44,13 @@ public class FactureController {
     public List<Facture> getFactureByUserEmail(@RequestParam(name = "userEmail") String userEmail) {
         return factureService.getFactureByUserEmail(userEmail);
     }
+
+
+    @GET
+    @RequestMapping(path = "/getFacture", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Facture> getFacture(@RequestParam(name = "factureCode") String factureCode) {
+        return factureService.getFacture(factureCode);
+    }
 //
 //    @PUT
 //    @RequestMapping(path = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)

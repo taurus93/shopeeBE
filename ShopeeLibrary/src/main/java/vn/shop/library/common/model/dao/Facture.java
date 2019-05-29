@@ -10,7 +10,8 @@ public class Facture {
     private String userEmail;
     private int quantity;
     private Float totalPrice;
-    private int status;
+    private String status;
+    private String receiverCode;
 
 //    public Integer getFactureID() {
 //        return factureID;
@@ -20,12 +21,21 @@ public class Facture {
 //        this.factureID = factureID;
 //    }
 
+    public String getReceiverCode() {
+        return receiverCode;
+    }
 
-    public int getStatus() {
+    public void setReceiverCode(String receiverCode) {
+        this.receiverCode = receiverCode;
+    }
+
+
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

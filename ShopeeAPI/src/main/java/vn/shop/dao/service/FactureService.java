@@ -20,13 +20,13 @@ public interface FactureService {
     /**
      * Returns an Facture
      *
-     * @param  factureID
+     * @param  factureCode
      * @return
      * <code>
      * List Facture
      * </code>
      */
-    List<Facture> getFacture(int factureID);
+    List<Facture> getFacture(String factureCode);
 
     /**
      * Returns an Facture

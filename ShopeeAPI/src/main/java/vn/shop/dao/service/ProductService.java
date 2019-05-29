@@ -34,6 +34,17 @@ public interface ProductService {
     /**
      * Returns an User
      *
+     * @param  factureCode
+     * @return
+     * <code>
+     * List Product
+     * </code>
+     */
+    List<Product> getAllProductByFacture(String factureCode);
+
+    /**
+     * Returns an User
+     *
      * @param  productCode
      * @return
      * <code>

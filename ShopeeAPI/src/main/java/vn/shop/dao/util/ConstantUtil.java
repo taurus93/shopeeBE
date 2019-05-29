@@ -68,4 +68,10 @@ public class ConstantUtil {
     public static final String status = "status";
     public static final String price = "price";
     /*E: OrderProduct*/
+    /*B: Receiver*/
+    public static final String receiverCode = "receiverCode";
+    public static final String name = "name";
+    public static final String county = "county";
+    public static final String wards = "wards";
+    /*E: Receiver*/
 }

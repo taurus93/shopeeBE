@@ -12,7 +12,7 @@ import java.util.List;
 public interface FactureDao {
     int insertFacture(JSONObject jsonObject);
 
-    List<Facture> getFacture(int factureID);
+    List<Facture> getFacture(String factureID);
 
     List<Facture> getFactureByUserEmail(String userEmail);
 

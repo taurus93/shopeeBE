@@ -46,7 +46,7 @@ public class OrderProductDaoImpl implements OrderProductDao {
                 "userEmail, productPicture, productName, productDescription, status, paymentCode) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
 
-            return jdbcTemplate.update(sql1, new Object[]{orderProduct.getOrderCode(), orderProduct.getProductCode(), "", totalPrice,
+            return jdbcTemplate.update(sql1, new Object[]{orderProduct.getOrderCode(), orderProduct.getProductCode(), "1", totalPrice,
                     orderProduct.getOrderDate(), orderProduct.getQuantity(),
                     orderProduct.getUserEmail(), productPicture, productName, productDescription, orderProduct.getStatus(), orderProduct.getPaymentCode()});
 

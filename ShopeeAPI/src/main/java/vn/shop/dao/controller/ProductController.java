@@ -47,6 +47,11 @@ public class ProductController {
         return productService.getProduct(productCode);
     }
     @GET
+    @RequestMapping(path = "/getAllProductByFacture", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getAllProductByFacture(@RequestParam(name = "factureCode") String factureCode) {
+        return productService.getAllProductByFacture(factureCode);
+    }
+    @GET
     @RequestMapping(path = "/getProductByCategory", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Product> getProductByCategory(@RequestParam(name = "categoryCode") String categoryCode) {
         return productService.getProductByCategory(categoryCode);

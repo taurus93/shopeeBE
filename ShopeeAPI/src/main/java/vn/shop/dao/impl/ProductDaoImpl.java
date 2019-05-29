@@ -1,17 +1,26 @@
 package vn.shop.dao.impl;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import vn.shop.dao.ProductDao;
+import vn.shop.dao.jdbc.CallableGetProduct;
 import vn.shop.dao.jdbc.CategoryMapper;
+import vn.shop.dao.jdbc.OrderProductMapper;
 import vn.shop.dao.jdbc.ProductMapper;
 import vn.shop.library.common.model.dao.Category;
+import vn.shop.library.common.model.dao.OrderProduct;
 import vn.shop.library.common.model.dao.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Created by lttung on 4/23/2019.
@@ -100,6 +109,66 @@ public class ProductDaoImpl implements ProductDao{
         logger.info("END get all, result: SUCCESS " + ret);
 
         return ret;
+    }
+    @Override
+    public List<Product> getAllProductByFacture(String factureCode) {
+
+        logger.info("Begin get");
+
+        String sql = "SELECT * FROM orderProduct WHERE factureCode = ?";
+        String sql1 = "SELECT * FROM product WHERE productCode = ?";
+
+        List<OrderProduct> ret = new ArrayList<>();
+        List<Product> listProduct = new ArrayList<>();
+
+        try {
+            ret = jdbcTemplate.query(sql, new Object[]{factureCode}, new OrderProductMapper());
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        for (int i=0; i<ret.size(); i++) {
+            try {
+                listProduct.addAll(jdbcTemplate.query(sql1, new Object[]{ret.get(i).getProductCode()}, new ProductMapper()));
+            }catch (Exception e) {
+                logger.info(e.getMessage(), e);
+            }
+        }
+
+//        int maxUserPerCallable = 0;
+//        ExecutorService service = Executors.newFixedThreadPool(30);
+//        List<CallableGetProduct> callables = new ArrayList<>();
+//        for (int i = 0; i < ret.size(); i++) {
+//            maxUserPerCallable++;
+//            String productCode = ret.get(i).getProductCode();
+//            CallableGetProduct callableGetProduct = new CallableGetProduct(productCode);
+//            callables.add(callableGetProduct);
+//        }
+//
+//        List<Future<List<Product>>> listFutures = null;
+//        try {
+//            listFutures = service.invokeAll(callables);
+//        } catch (InterruptedException e) {
+//            Thread.currentThread().interrupt();
+//            logger.error(e.getMessage(), e);
+//        }
+//        service.shutdown();
+
+//        if (listFutures != null && !listFutures.isEmpty()) {
+//            for (int i = 0; i < listFutures.size(); i++) {
+//                try {
+//                    listProduct.addAll(listFutures.get(i).get());
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                } catch (ExecutionException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+
+        logger.info("END get all, result: SUCCESS " + ret);
+
+        return listProduct;
     }
 
     @Override

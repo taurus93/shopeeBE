@@ -1,6 +1,7 @@
 package vn.shop.dao.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 import vn.shop.dao.CategoryDao;
 import vn.shop.dao.ProductDao;
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by lttung on 4/23/2019.
  */
 @Service("ProductService")
+@EnableScheduling
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
@@ -35,6 +37,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProductByCategory(String categoryCode) {
         return productDao.getProductByCategory(categoryCode);
+    }
+    @Override
+    public List<Product> getAllProductByFacture(String factureCode) {
+        return productDao.getAllProductByFacture(factureCode);
     }
     @Override
     public int deleteProduct(String productCode) {
