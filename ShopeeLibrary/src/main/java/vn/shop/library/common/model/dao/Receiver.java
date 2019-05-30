@@ -16,6 +16,16 @@ public class Receiver {
     private String wards;
     private String street;
     private String userEmail;
+    private String receiverDefault;
+
+
+    public String getReceiverDefault() {
+        return receiverDefault;
+    }
+
+    public void setReceiverDefault(String receiverDefault) {
+        this.receiverDefault = receiverDefault;
+    }
 
     public String getReceiverCode() {
         return receiverCode;

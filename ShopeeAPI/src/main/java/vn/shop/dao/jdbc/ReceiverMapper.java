@@ -27,6 +27,7 @@ public class ReceiverMapper implements RowMapper<Receiver> {
             result.setWards(resultSet.getString(ConstantUtil.wards));
             result.setStreet(resultSet.getString(ConstantUtil.street));
             result.setUserEmail(resultSet.getString(ConstantUtil.userEmail));
+            result.setReceiverDefault(resultSet.getString(ConstantUtil.receiverDefault));
 
         }catch (Exception e) {
 

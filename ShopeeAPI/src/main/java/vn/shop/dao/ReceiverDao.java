@@ -11,13 +11,17 @@ import java.util.List;
  */
 public interface ReceiverDao {
 
-//    int insertFacture(JSONObject jsonObject);
+    int insertReceiver(Receiver receiver);
 
 //    List<Facture> getFacture(int factureID);
 
-//    List<Facture> getFactureByUserEmail(String userEmail);
+    List<Receiver> getAllReceiverByUser(String userEmail);
 
     List<Receiver> getAllReceiver();
+
+    int selectReceiver(Receiver receiver);
+
+    int deleteReceiver(String receiverCode);
 
 //    int updateFacture(Facture facture);
 }

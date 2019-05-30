@@ -1,5 +1,6 @@
 package vn.shop.dao;
 
+import vn.shop.library.common.model.dao.Receiver;
 import vn.shop.library.common.model.dao.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface UserDao {
 
-    int insertUser(User user);
+    int insertUser(User user, Receiver receiver);
 
     List<User> getUser(String userName, String password);
 

@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import vn.shop.dao.UserDao;
+import vn.shop.dao.controller.RecevierController;
 import vn.shop.dao.jdbc.UserMapper;
+import vn.shop.library.common.model.dao.Receiver;
 import vn.shop.library.common.model.dao.User;
 
 import java.util.ArrayList;
@@ -21,15 +23,19 @@ public class UserDaoImpl implements UserDao{
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private RecevierController recevierController;
 
     @Override
-    public int insertUser(User user) {
+    public int insertUser(User user, Receiver receiver) {
         logger.info("Begin insert user");
-        String sql = "INSERT INTO user(userName, phoneNumber, userEmail, password, profile, street, suburb, city, postcode) value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user(userName, phoneNumber, userEmail, password, profile, street, county, city, postcode, wards) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        int result = 0;
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPhoneNumber(), user.getUserEmail(), user.getPassword(),
-                    user.getProfile(), user.getStreet(), user.getSuburb(), user.getCity(), user.getPostcode()});
+            result = jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPhoneNumber(), user.getUserEmail(), user.getPassword(),
+                    user.getProfile(), user.getStreet(), user.getCounty(), user.getCity(), user.getPostcode(), user.getWards()});
+            recevierController.insertReceiver(receiver);
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
@@ -105,12 +111,12 @@ public class UserDaoImpl implements UserDao{
         logger.info("Begin updateUserMappingSSO");
 
         String sql = "UPDATE user SET userName = ?, phoneNumber = ?, password = ?, profile = ?," +
-                "street = ?, suburb = ?, city = ?, postcode = ? WHERE userEmail = ?";
+                "street = ?, county = ?, city = ?, postcode = ?, wards = ? WHERE userEmail = ?";
 
         try {
 
             return jdbcTemplate.update(sql, new Object[]{user.getUserName(), user.getPhoneNumber(), user.getPassword(),
-                    user.getProfile(), user.getStreet(), user.getSuburb(), user.getCity(), user.getPostcode(), user.getUserEmail()});
+                    user.getProfile(), user.getStreet(), user.getCounty(), user.getCity(), user.getPostcode(), user.getWards(), user.getUserEmail()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

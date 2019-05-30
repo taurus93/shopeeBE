@@ -20,6 +20,18 @@ public class ReceiverServiceImpl implements ReceiverService{
     private ReceiverDao receiverDao;
 
     @Override
+    public int insertReceiver(Receiver receiver){ return receiverDao.insertReceiver(receiver); }
+
+    @Override
+    public List<Receiver> getAllReceiverByUser(String userEmail){ return receiverDao.getAllReceiverByUser(userEmail); }
+
+    @Override
     public List<Receiver> getAllReceiver(){ return receiverDao.getAllReceiver(); }
+
+    @Override
+    public int deleteReceiver(String receiverCode){ return receiverDao.deleteReceiver(receiverCode); }
+
+    @Override
+    public int selectReceiver(Receiver receiver){ return receiverDao.selectReceiver(receiver); }
 
 }

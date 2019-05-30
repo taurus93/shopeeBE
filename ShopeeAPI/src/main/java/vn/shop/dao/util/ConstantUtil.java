@@ -73,5 +73,6 @@ public class ConstantUtil {
     public static final String name = "name";
     public static final String county = "county";
     public static final String wards = "wards";
+    public static final String receiverDefault = "receiverDefault";
     /*E: Receiver*/
 }

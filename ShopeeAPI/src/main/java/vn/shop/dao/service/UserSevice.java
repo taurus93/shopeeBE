@@ -1,5 +1,6 @@
 package vn.shop.dao.service;
 
+import vn.shop.library.common.model.dao.Receiver;
 import vn.shop.library.common.model.dao.User;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public interface UserSevice {
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-    int insertUser(User user);
+    int insertUser(User user, Receiver receiver);
 
     /**
      * Returns an User

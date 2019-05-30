@@ -25,6 +25,44 @@ public class ReceiverDaoImpl implements ReceiverDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
+    public int insertReceiver(Receiver receiver) {
+
+        logger.info("Begin insert");
+        String sql = "INSERT INTO receiver(receiverCode, name, phoneNumber, city, county, wards, street, userEmail, receiverDefault) value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+
+            return jdbcTemplate.update(sql, new Object[]{receiver.getReceiverCode(), receiver.getName(), receiver.getPhoneNumber(),
+                    receiver.getCity(), receiver.getCounty(), receiver.getWards(), receiver.getStreet(), receiver.getUserEmail(), receiver.getReceiverDefault()});
+
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        logger.info("End insert, result: Success");
+        return 0;
+    }
+
+    @Override
+    public List<Receiver> getAllReceiverByUser(String userEmail) {
+
+        logger.info("Begin get all");
+
+        String sql = "SELECT * FROM receiver WHERE (userEmail = ? AND receiverCode != '1')";
+
+        List<Receiver> ret = new ArrayList<>();
+
+        try {
+            ret = jdbcTemplate.query(sql, new Object[]{userEmail}, new ReceiverMapper());
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        logger.info("END get all user, result: SUCCESS" + ret);
+
+        return ret;
+    }
+
+    @Override
     public List<Receiver> getAllReceiver() {
 
         logger.info("Begin get all");
@@ -42,5 +80,47 @@ public class ReceiverDaoImpl implements ReceiverDao {
         logger.info("END get all user, result: SUCCESS" + ret);
 
         return ret;
+    }
+
+    @Override
+    public int selectReceiver(Receiver receiver) {
+
+        logger.info("Begin");
+
+        String sql = "UPDATE receiver SET receiverDefault = 'false' WHERE userEmail = ?";
+
+        try {
+
+            jdbcTemplate.update(sql, new Object[]{receiver.getUserEmail()});
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        String sql1 = "UPDATE receiver SET receiverDefault = 'true' WHERE receiverCode = ?";
+
+        try {
+
+            return jdbcTemplate.update(sql1, new Object[]{receiver.getReceiverCode()});
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        logger.info("End, FAIL");
+        return 0;
+    }
+
+
+    @Override
+    public int deleteReceiver(String receiverCode) {
+        logger.info("Begin");
+
+        String sql = "DELETE FROM receiver WHERE receiverCode = ?";
+
+        try {
+            return jdbcTemplate.update(sql, new Object[]{receiverCode});
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+        return 0;
     }
 }

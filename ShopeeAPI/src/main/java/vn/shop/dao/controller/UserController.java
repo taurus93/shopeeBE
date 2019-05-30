@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import vn.shop.dao.service.UserSevice;
+import vn.shop.library.common.model.dao.Receiver;
 import vn.shop.library.common.model.dao.User;
 
 import javax.ws.rs.GET;
@@ -38,7 +39,19 @@ public class UserController {
     @POST
     @RequestMapping(path = "/insertUser", produces = MediaType.APPLICATION_JSON_VALUE)
     public int insertUser(@RequestBody User user) {
-        return userSevice.insertUser(user);
+
+        Receiver receiver = new Receiver();
+        receiver.setReceiverCode(user.getUserEmail());
+        receiver.setName(user.getUserName());
+        receiver.setPhoneNumber(user.getPhoneNumber());
+        receiver.setCity(user.getCity());
+        receiver.setCounty(user.getCounty());
+        receiver.setWards(user.getWards());
+        receiver.setStreet(user.getStreet());
+        receiver.setUserEmail(user.getUserEmail());
+        receiver.setReceiverDefault("false");
+
+        return userSevice.insertUser(user, receiver);
     }
 
     @GET

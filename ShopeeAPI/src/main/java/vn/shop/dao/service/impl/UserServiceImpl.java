@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import vn.shop.dao.UserDao;
 import vn.shop.dao.impl.GoogleMail;
 import vn.shop.dao.service.UserSevice;
+import vn.shop.library.common.model.dao.Receiver;
 import vn.shop.library.common.model.dao.User;
 
 import java.util.List;
@@ -29,8 +30,8 @@ public class UserServiceImpl implements UserSevice {
         return userDao.getUserByUserName(userName);
     }
     @Override
-    public int insertUser(User user) {
-        return userDao.insertUser(user);
+    public int insertUser(User user, Receiver receiver) {
+        return userDao.insertUser(user, receiver);
     }
     @Override
     public int updateUser(User user) {

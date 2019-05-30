@@ -18,12 +18,12 @@ public class User implements Serializable{
     private String password;
     private String profile;
     private String street;
-    private String suburb;
+    private String county;
     private String city;
 //    private String state;
     private String postcode;
-
-//    public Integer getUserID() {
+    private String wards;
+    //    public Integer getUserID() {
 //        return userID;
 //    }
 
@@ -49,12 +49,21 @@ public class User implements Serializable{
         this.street = street;
     }
 
-    public String getSuburb() {
-        return suburb;
+
+    public String getCounty() {
+        return county;
     }
 
-    public void setSuburb(String suburb) {
-        this.suburb = suburb;
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getWards() {
+        return wards;
+    }
+
+    public void setWards(String wards) {
+        this.wards = wards;
     }
 
     public String getCity() {
