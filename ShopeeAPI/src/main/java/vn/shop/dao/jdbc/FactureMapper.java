@@ -22,6 +22,7 @@ public class FactureMapper implements RowMapper<Facture>{
             result.setQuantity(resultSet.getInt(ConstantUtil.quantity));
             result.setTotalPrice(resultSet.getFloat(ConstantUtil.totalPrice));
             result.setStatus(resultSet.getString(ConstantUtil.status));
+            result.setReceiverCode(resultSet.getString(ConstantUtil.receiverCode));
 
         }catch (Exception e) {
 

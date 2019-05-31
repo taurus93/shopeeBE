@@ -17,6 +17,8 @@ public interface ReceiverDao {
 
     List<Receiver> getAllReceiverByUser(String userEmail);
 
+    List<Receiver> getAllReceiverByFacture(String factureCode);
+
     List<Receiver> getAllReceiver();
 
     int selectReceiver(Receiver receiver);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import vn.shop.dao.ReceiverDao;
 import vn.shop.dao.jdbc.ReceiverMapper;
 import vn.shop.dao.jdbc.UserMapper;
+import vn.shop.library.common.model.dao.Facture;
 import vn.shop.library.common.model.dao.Receiver;
 import vn.shop.library.common.model.dao.User;
 
@@ -23,6 +24,9 @@ public class ReceiverDaoImpl implements ReceiverDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private FactureDaoImpl factureDao;
 
     @Override
     public int insertReceiver(Receiver receiver) {
@@ -53,6 +57,30 @@ public class ReceiverDaoImpl implements ReceiverDao {
 
         try {
             ret = jdbcTemplate.query(sql, new Object[]{userEmail}, new ReceiverMapper());
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        logger.info("END get all user, result: SUCCESS" + ret);
+
+        return ret;
+    }
+
+    @Override
+    public List<Receiver> getAllReceiverByFacture(String factureCode) {
+
+        logger.info("Begin get all");
+
+        List<Facture> facture = factureDao.getFacture(factureCode);
+
+        String receiverCode = facture.get(0).getReceiverCode();
+
+        String sql = "SELECT * FROM receiver WHERE receiverCode = ?";
+
+        List<Receiver> ret = new ArrayList<>();
+
+        try {
+            ret = jdbcTemplate.query(sql, new Object[]{receiverCode}, new ReceiverMapper());
         }catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

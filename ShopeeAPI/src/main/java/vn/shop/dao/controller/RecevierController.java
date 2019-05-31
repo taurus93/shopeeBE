@@ -35,6 +35,13 @@ public class RecevierController {
         return receiverService.getAllReceiverByUser(userEmail);
     }
 
+
+    @GET
+    @RequestMapping(path = "/getAllReceiverByFacture", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Receiver> getAllReceiverByFacture(@RequestParam String factureCode) {
+        return receiverService.getAllReceiverByFacture(factureCode);
+    }
+
     @GET
     @RequestMapping(path = "/getAllReceiver", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Receiver> getAllReceiver() {

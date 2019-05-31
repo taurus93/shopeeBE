@@ -45,7 +45,7 @@ public class FactureDaoImpl implements FactureDao{
         try {
 
             jdbcTemplate.update(sql1, new Object[]{facture.getFactureCode(), facture.getUserEmail(),
-                    quantity, totalPrice, status, "1"});
+                    quantity, totalPrice, status, facture.getUserEmail()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);

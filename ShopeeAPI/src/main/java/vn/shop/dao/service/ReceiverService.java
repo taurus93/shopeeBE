@@ -36,6 +36,15 @@ public interface ReceiverService {
      * List Receiver
      * </code>
      */
+    List<Receiver> getAllReceiverByFacture(String factureCode);
+    /**
+     * Returns all Receiver
+     *
+     * @return
+     * <code>
+     * List Receiver
+     * </code>
+     */
     List<Receiver> getAllReceiver();
     /**
      * Returns

@@ -26,6 +26,9 @@ public class ReceiverServiceImpl implements ReceiverService{
     public List<Receiver> getAllReceiverByUser(String userEmail){ return receiverDao.getAllReceiverByUser(userEmail); }
 
     @Override
+    public List<Receiver> getAllReceiverByFacture(String factureCode){ return receiverDao.getAllReceiverByFacture(factureCode); }
+
+    @Override
     public List<Receiver> getAllReceiver(){ return receiverDao.getAllReceiver(); }
 
     @Override
