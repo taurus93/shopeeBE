@@ -18,7 +18,7 @@ public interface CategoryService {
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-    String insertCategory(Category category);
+    int insertCategory(Category category);
 
     /**
      * Returns an Client
@@ -44,6 +44,16 @@ public interface CategoryService {
     /**
      * Returns an Client
      *
+     * @return
+     * <code>
+     * List Client
+     * </code>
+     */
+    int deleteCategory(String categoryCode);
+
+    /**
+     * Returns an Client
+     *
      * @param  clientName
      * @return
      * <code>
@@ -55,10 +65,10 @@ public interface CategoryService {
     /**
      * Returns boolean
      *
-     * @param  client
+     * @param  category
      * @return
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-//    int updateClient(Client client);
+    int updateCategory(Category category);
 }

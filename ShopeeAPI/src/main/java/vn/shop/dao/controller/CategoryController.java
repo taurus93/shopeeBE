@@ -2,10 +2,7 @@ package vn.shop.dao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.shop.dao.service.CategoryService;
 import vn.shop.dao.service.ClientSevice;
 import vn.shop.library.common.model.dao.Category;
@@ -27,11 +24,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-//    @POST
-//    @RequestMapping(path = "/getUser", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<User> getUser(@RequestBody User user) {
-//        return clientSevice.getUser(user.getUserName(), user.getPassword());
-//    }
+    @POST
+    @RequestMapping(path = "/insertCategory", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int insertCategory(@RequestBody Category category) {
+        return categoryService.insertCategory(category);
+    }
 
     @GET
     @RequestMapping(path = "/getAllCategory", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,22 +36,15 @@ public class CategoryController {
         return categoryService.getAllCategory();
     }
 
-
-    @POST
-    @RequestMapping(path = "/insertCategory", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String insertUser(@RequestBody Category category) {
-        return categoryService.insertCategory(category);
+    @GET
+    @RequestMapping(path = "/deleteCategory", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int deleteCategory(@RequestParam(name = "categoryCode") String categoryCode) {
+        return categoryService.deleteCategory(categoryCode);
     }
 //
-//    @GET
-//    @RequestMapping(path = "/getUserByUserName", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<User> getUserByUserName(@RequestParam(name = "userName") String userName) {
-//        return clientSevice.getUserByUserName(userName);
-//    }
-//
-//    @PUT
-//    @RequestMapping(path = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public int updateUser(@RequestBody User user) {
-//        return clientSevice.updateUser(user);
-//    }
+    @POST
+    @RequestMapping(path = "/updateCategory", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int updateCategory(@RequestBody Category category) {
+        return categoryService.updateCategory(category);
+    }
 }

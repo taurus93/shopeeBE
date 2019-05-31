@@ -24,19 +24,19 @@ public class CategoryDaoImpl implements CategoryDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String insertCategory(Category category) {
+    public int insertCategory(Category category) {
         logger.info("Begin insert category");
         String sql = "INSERT INTO category(categoryCode, categoryName, catDescription, catPicture) value(?, ?, ?, ?)";
         try {
 
-            return String.valueOf(jdbcTemplate.update(sql, new Object[]{category.getCategoryCode(), category.getCategoryName(), category.getCatDescription(), category.getCatPicture()}));
+            return jdbcTemplate.update(sql, new Object[]{category.getCategoryCode(), category.getCategoryName(), category.getCatDescription(), category.getCatPicture()});
 
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
         logger.info("End insert, result: Success");
-        return "0";
+        return 0;
     }
 
     @Override
@@ -84,16 +84,31 @@ public class CategoryDaoImpl implements CategoryDao {
     public int updateCategory(Category category) {
         logger.info("Begin update category");
 
-        String sql = "UPDATE category SET categoryName = ?, catDescription = ?, catPicture = ? WHERE categoryID = ?";
+        String sql = "UPDATE category SET categoryName = ?, catDescription = ?, catPicture = ? WHERE categoryCode = ?";
 
         try {
 
-            return jdbcTemplate.update(sql, new Object[]{category.getCategoryName(), category.getCatDescription(), category.getCatPicture()});
+            return jdbcTemplate.update(sql, new Object[]{category.getCategoryName(), category.getCatDescription(),
+                    category.getCatPicture(), category.getCategoryCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }
 
         logger.info("End update category, FAIL");
+        return 0;
+    }
+
+    @Override
+    public int deleteCategory(String categoryCode) {
+        logger.info("Begin");
+
+        String sql = "DELETE FROM category WHERE categoryCode = ?";
+
+        try {
+            return jdbcTemplate.update(sql, new Object[]{categoryCode});
+        }catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
         return 0;
     }
 

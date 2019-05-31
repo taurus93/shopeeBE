@@ -8,11 +8,13 @@ import java.util.List;
  * Created by lttung on 3/29/2019.
  */
 public interface CategoryDao {
-    String insertCategory(Category Category);
+    int insertCategory(Category Category);
 
     List<Category> getCategory(String categoryCode);
 
     List<Category> getAllCategory();
 
     int updateCategory(Category Category);
+
+    int deleteCategory(String categoryCode);
 }

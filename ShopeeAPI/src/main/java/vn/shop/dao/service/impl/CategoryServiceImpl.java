@@ -26,7 +26,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public String insertCategory(Category category) {
+    public int insertCategory(Category category) {
         return categoryDao.insertCategory(category);
+    }
+
+    @Override
+    public int deleteCategory(String categoryCode) {
+        return categoryDao.deleteCategory(categoryCode);
+    }
+
+    @Override
+    public int updateCategory(Category category) {
+        return categoryDao.updateCategory(category);
     }
 }
