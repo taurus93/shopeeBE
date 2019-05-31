@@ -32,6 +32,13 @@ public class OrderProductController {
     public List<OrderProduct> getOrderProduct(@RequestParam(name = "userEmail") String userEmail) {
         return orderProductService.getOrderProduct(userEmail);
     }
+
+
+    @GET
+    @RequestMapping(path = "/getOrderProductByFacture", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderProduct> getOrderProductByFacture(@RequestParam(name = "factureCode") String factureCode) {
+        return orderProductService.getOrderProductByFacture(factureCode);
+    }
     //
     @GET
     @RequestMapping(path = "/getAllOrderProduct", produces = MediaType.APPLICATION_JSON_VALUE)

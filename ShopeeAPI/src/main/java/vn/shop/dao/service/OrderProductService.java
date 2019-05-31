@@ -23,6 +23,15 @@ public interface OrderProductService {
      * </code>
      */
     List<OrderProduct> getOrderProduct(String userEmail);
+    /**
+     * Returns an OrderProduct
+     *
+     * @return
+     * <code>
+     * List OrderProduct
+     * </code>
+     */
+    List<OrderProduct> getOrderProductByFacture(String factureCode);
 
     /**
      * Returns an OrderProduct

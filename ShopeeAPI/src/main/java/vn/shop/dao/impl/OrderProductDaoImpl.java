@@ -80,6 +80,27 @@ public class OrderProductDaoImpl implements OrderProductDao {
     }
 
     @Override
+    public List<OrderProduct> getOrderProductByFacture(String factureCode) {
+
+        logger.info("Begin get OrderProduct");
+
+        String sql = "SELECT * FROM orderproduct WHERE factureCode = ?";
+
+        List<OrderProduct> ret = new ArrayList<>();
+        try {
+
+            ret =  jdbcTemplate.query(sql, new Object[]{factureCode}, new OrderProductMapper());
+
+        } catch (Exception e) {
+            logger.info(e.getMessage(), e);
+        }
+
+        int result = (ret == null ? 0 : ret.size());
+        logger.info("End get, result: Success" + result);
+        return ret;
+    }
+
+    @Override
     public List<OrderProduct> getAllOrderProduct() {
 
         logger.info("Begin get all OrderProduct");

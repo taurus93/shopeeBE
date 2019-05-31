@@ -9,6 +9,7 @@ import vn.shop.library.common.model.dao.Facture;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import java.util.List;
 
 @RestController
@@ -52,10 +53,10 @@ public class FactureController {
         return factureService.getFacture(factureCode);
     }
 //
-//    @PUT
-//    @RequestMapping(path = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public int updateUser(@RequestBody User user) {
-//        return clientSevice.updateUser(user);
-//    }
+    @POST
+    @RequestMapping(path = "/updateFacture", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int updateFacture(@RequestBody Facture facture) {
+        return factureService.updateFacture(facture);
+    }
     
 }

@@ -9,6 +9,8 @@ public interface OrderProductDao {
 
     List<OrderProduct> getOrderProduct(String userEmail);
 
+    List<OrderProduct> getOrderProductByFacture(String factureCode);
+
 //    List<OrderProduct> getOrderProductByOrderID(int orderID);
 
     List<OrderProduct> getAllOrderProduct();

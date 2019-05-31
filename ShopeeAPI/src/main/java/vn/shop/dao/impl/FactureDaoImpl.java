@@ -138,12 +138,12 @@ public class FactureDaoImpl implements FactureDao{
     public int updateFacture(Facture facture) {
         logger.info("Begin updateFactureMappingSSO");
 
-        String sql = "UPDATE facture SET userEmail = ?, productName = ?, quantity = ?, totalPrice = ?, status = ? WHERE factureCode = ?";
+        String sql = "UPDATE facture SET userEmail = ?, quantity = ?, totalPrice = ?, status = ?, receiverCode = ? WHERE factureCode = ?";
 
         try {
 
             return jdbcTemplate.update(sql, new Object[]{facture.getUserEmail(),
-                    facture.getQuantity(), facture.getStatus(), facture.getFactureCode()});
+                    facture.getQuantity(), facture.getTotalPrice(), facture.getStatus(), facture.getReceiverCode(), facture.getFactureCode()});
         } catch (Exception e) {
             logger.info(e.getMessage(), e);
         }

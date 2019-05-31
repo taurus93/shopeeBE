@@ -56,6 +56,6 @@ public interface FactureService {
      * <code> 0 : unsuccess</code>
      * <code> 1 : success</code>
      */
-//    int updateFacture(Facture facture);
+    int updateFacture(Facture facture);
     
 }

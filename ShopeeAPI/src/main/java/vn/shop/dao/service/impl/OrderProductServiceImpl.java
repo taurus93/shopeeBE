@@ -26,6 +26,11 @@ public class OrderProductServiceImpl implements OrderProductService {
     }
 
     @Override
+    public List<OrderProduct> getOrderProductByFacture(String factureCode) {
+        return orderProductDao.getOrderProductByFacture(factureCode);
+    }
+
+    @Override
     public List<OrderProduct> getAllOrderProduct() {
         return orderProductDao.getAllOrderProduct();
     }

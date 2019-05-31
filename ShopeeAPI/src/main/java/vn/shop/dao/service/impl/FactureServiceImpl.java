@@ -32,4 +32,8 @@ public class FactureServiceImpl implements FactureService{
     public int insertFacture(JSONObject jsonObject) {
         return factureDao.insertFacture(jsonObject);
     }
+    @Override
+    public int updateFacture(Facture facture) {
+        return factureDao.updateFacture(facture);
+    }
 }
